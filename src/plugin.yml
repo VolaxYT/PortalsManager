@@ -1,0 +1,5 @@
+name: PortalCanceller
+version: 1.0
+main: fr.volax.portal.MainPortal
+description: Anti portal
+author: Volax
