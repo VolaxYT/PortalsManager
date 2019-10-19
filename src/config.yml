@@ -1,0 +1,14 @@
+#            PortalsCanceller by Volax
+# Source Code: https://github.com/VolaxYT/PortalsCanceller/
+
+# false = players can't create/enter portal
+# true = players can create/enter portal
+portals:
+  create-nether: false
+  enter-nether: false
+  dispenser-use-flint: false
+  create-end: false
+  create-aether: false
+
+permissions:
+  reload: "pc.reload"
