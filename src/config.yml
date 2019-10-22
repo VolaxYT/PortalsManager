@@ -4,10 +4,14 @@
 # false = players can't create/enter portal
 # true = players can create/enter portal
 portals:
+  #Nether
   create-nether: false
   enter-nether: false
   dispenser-use-flint: false
+  #End
   create-end: false
+  enter-end: false
+  #Others
   create-aether: false
 
 permissions:

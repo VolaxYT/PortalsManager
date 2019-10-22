@@ -1,28 +1,17 @@
 package fr.volax.portal;
 
-import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.configuration.Configuration;
-import org.bukkit.entity.Item;
+import org.bukkit.craftbukkit.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockDispenseEvent;
-import org.bukkit.event.entity.EntityPortalEnterEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.PortalCreateEvent;
 
 public class PortalsEvent implements Listener {
-    /**
-     * When player try to enter in portal of Nether, he is teleport to back location
-     * if in config the option : 'portals.enter-nether' is set to false -> the event is cancelled
-     */
-    @EventHandler
-    public void onPortal(EntityPortalEnterEvent event){
-        Player player = (Player) event.getEntity();
-        player.teleport(new Location(player.getWorld(), player.getLocation().getX() - 1, player.getLocation().getY(), player.getLocation().getZ() - 1));
-    }
 
     /**
      * When player try to create Nether or End portal -> the event is cancelled
@@ -49,6 +38,7 @@ public class PortalsEvent implements Listener {
             if(p.getItemInHand().getType() == Material.WATER_BUCKET){
                 if(event.getClickedBlock().getType() == Material.GLOWSTONE){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-aether")) {
+                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a Aether portal");
                         event.setCancelled(true);
                     }
                 }
@@ -60,6 +50,7 @@ public class PortalsEvent implements Listener {
                 if(event.getClickedBlock().getType() == Material.ENDER_PORTAL_FRAME){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-end")) {
                         event.setCancelled(true);
+                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a End portal");
                     }
                 }
                 /**
@@ -70,6 +61,7 @@ public class PortalsEvent implements Listener {
                 if (event.getClickedBlock().getType() == Material.OBSIDIAN) {
                     if (!MainPortal.getMain().getConfig().getBoolean("portals.create-nether")) {
                         event.setCancelled(true);
+                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a Nether portal");
                     }
                 }
             }
@@ -84,6 +76,31 @@ public class PortalsEvent implements Listener {
         if(event.getItem().getType() == Material.FLINT_AND_STEEL) {
             if (!MainPortal.getMain().getConfig().getBoolean("portals.dispenser-use-flint")){
                 event.setCancelled(true);
+            }
+        }
+    }
+    /**
+     * When player try to enter in portal of Nether / End, he isn't teleport
+     * if in config the option : 'portals.enter-nether' is set to false -> the event is cancelled
+     * if in config the option : 'portals.enter-end' is set to false -> the event is cancelled
+     */
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event){
+        Player p = event.getPlayer();
+        PlayerTeleportEvent.TeleportCause cause = event.getCause();
+        if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
+            if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
+                System.err.println("[PortalsCanceller]" + p.getName() + " Try to enter in End portal");
+                event.setCancelled(true);
+                return;
+            }
+        }
+
+        if(cause.equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)){
+            if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-nether")) {
+                System.err.println("[PortalsCanceller]" + p.getName() + " Try to enter in Nether portal");
+                event.setCancelled(true);
+                return;
             }
         }
     }

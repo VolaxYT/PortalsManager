@@ -5,7 +5,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Small and easy Portals Canceller for Minecraft 1.7 to 1.12!
+ * Small and easy Portals Canceller for Minecraft 1.8 to 1.12!
  * The project is on https://github.com/VolaxYT/PortalsCanceller
  *
  * @author Volax
@@ -13,6 +13,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainPortal extends JavaPlugin implements Listener {
     public static MainPortal instance;
+    public static MainPortal getMain(){
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -21,9 +24,5 @@ public class MainPortal extends JavaPlugin implements Listener {
         getCommand("portal").setExecutor(new PortalsCommands());
         saveDefaultConfig();
         instance = this;
-    }
-
-    public static MainPortal getMain(){
-        return instance;
     }
 }
