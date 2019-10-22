@@ -1,5 +1,5 @@
 # PortalsCanceller
-Minecraft Plugin 1.8.X to 1.2.X. Plugin for cancel all portal creation and cancel nether portal teleporting:
+Minecraft Plugin 1.8.X to 1.2.X. Plugin for cancel all portal creation and cancel nether portal teleporting
 
 
 **Permissions:**
