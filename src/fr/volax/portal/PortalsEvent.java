@@ -88,6 +88,7 @@ public class PortalsEvent implements Listener {
     public void onPlayerTeleport(PlayerTeleportEvent event){
         Player p = event.getPlayer();
         PlayerTeleportEvent.TeleportCause cause = event.getCause();
+        
         if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
             if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
                 System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in an End portal at " + p.getLocation());
