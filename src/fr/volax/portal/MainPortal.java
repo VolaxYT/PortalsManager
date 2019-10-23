@@ -12,17 +12,22 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 
 public class MainPortal extends JavaPlugin implements Listener {
+    
     public static MainPortal instance;
-    public static MainPortal getMain(){
-        return instance;
-    }
 
     @Override
     public void onEnable() {
+        instance = this;
+        
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PortalsEvent(), this);
+        
         getCommand("portal").setExecutor(new PortalsCommands());
+        
         saveDefaultConfig();
-        instance = this;
+    }
+    
+    public static MainPortal getMain() {
+        return instance;
     }
 }
