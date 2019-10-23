@@ -14,8 +14,8 @@ import org.bukkit.event.world.PortalCreateEvent;
 public class PortalsEvent implements Listener {
 
     /**
-     * When player try to create Nether or End portal -> the event is cancelled
-     * if in config the option : 'portals.create-end' is set to false -> the event is cancelled
+     * When a player tries to create a Nether Portal
+     * if in config the option: 'portals.create-nether' is set to false -> the event is cancelled
      */
     @EventHandler
     public void onPortalCreate(PortalCreateEvent event){
@@ -25,50 +25,50 @@ public class PortalsEvent implements Listener {
     }
 
     /**
-     * When player try to right click with...
+     * When player tries to right click
      */
     @EventHandler
     public void onRightClick(PlayerInteractEvent event){
         Player p = event.getPlayer();
         /**
-         * AETHER ADDON - When player try to right click with a water bucket on block of glowstone
-         * if in config the option : 'portals.create-end' is set to false -> the event is cancelled
+         * AETHER ADDON - When player tries to right click with a water bucket on block of glowstone
+         * if in config the option : 'portals.create-aether' is set to false -> the event is cancelled
          */
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if(p.getItemInHand().getType() == Material.WATER_BUCKET){
                 if(event.getClickedBlock().getType() == Material.GLOWSTONE){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-aether")) {
-                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a Aether portal");
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an Aether portal at " + p.getLocation());
                         event.setCancelled(true);
                     }
                 }
                 /**
-                 * When player try to right click with a eye of ender on ender portal frame
-                 * if in config the option : 'portals.create-end' is set to false -> the event is cancelled
+                 * When player tries to right click with a eye of ender on ender portal frame
+                 * if in config the option: 'portals.create-end' is set to false -> the event is cancelled
                  */
             }else if(p.getItemInHand().getType() == Material.EYE_OF_ENDER){
                 if(event.getClickedBlock().getType() == Material.ENDER_PORTAL_FRAME){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-end")) {
                         event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a End portal");
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an End portal at " + p.getLocation());
                     }
                 }
                 /**
-                 * When player try to right click with a flint and steal on obsidian block
-                 * if in config the option : 'portals.create-nether' is set to false -> the event is cancelled
+                 * When player tries to right click with a flint and steel on an obsidian block
+                 * if in config the option: 'portals.create-nether' is set to false -> the event is cancelled
                  */
             }else if(p.getItemInHand().getType() == Material.FLINT_AND_STEEL) {
                 if (event.getClickedBlock().getType() == Material.OBSIDIAN) {
                     if (!MainPortal.getMain().getConfig().getBoolean("portals.create-nether")) {
                         event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " Try to create a Nether portal");
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create a Nether portal at " + p.getLocation());
                     }
                 }
             }
         }
     }
     /**
-     * When player try to use dispenser for place fire on blocks ( all blocks of game )
+     * When player tries to use a dispenser for place fire on (all) blocks
      * if in config the option : 'portals.dispenser-use-flint' is set to false -> the event is cancelled
      */
     @EventHandler
@@ -90,7 +90,7 @@ public class PortalsEvent implements Listener {
         PlayerTeleportEvent.TeleportCause cause = event.getCause();
         if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
             if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
-                System.err.println("[PortalsCanceller]" + p.getName() + " Try to enter in End portal");
+                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in an End portal at " + p.getLocation());
                 event.setCancelled(true);
                 return;
             }
@@ -98,7 +98,7 @@ public class PortalsEvent implements Listener {
 
         if(cause.equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)){
             if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-nether")) {
-                System.err.println("[PortalsCanceller]" + p.getName() + " Try to enter in Nether portal");
+                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in a Nether portal at " + p.getLocation());
                 event.setCancelled(true);
                 return;
             }
