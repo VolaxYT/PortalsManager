@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.Arrays;
 
 public class ItemAPI {
+    
     private ItemStack is;
 
     public ItemAPI(Material m) {
@@ -104,8 +105,7 @@ public class ItemAPI {
             LeatherArmorMeta im = (LeatherArmorMeta) is.getItemMeta();
             im.setColor(color);
             is.setItemMeta(im);
-        } catch (ClassCastException expected) {
-        }
+        } catch (ClassCastException ignored) { }
         return this;
     }
 
