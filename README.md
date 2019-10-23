@@ -1,5 +1,5 @@
 # PortalsCanceller
-Minecraft Plugin 1.8.X to 1.2.X. Plugin for cancel all portal creation and cancel nether portal teleporting
+Minecraft Plugin from 1.8.X to 1.12.X. Plugin to cancel all portal creation and cancel nether portal teleporting
 
 
 **Permissions:**
@@ -8,14 +8,13 @@ Minecraft Plugin 1.8.X to 1.2.X. Plugin for cancel all portal creation and cance
 
 **Addons:**
 --------------------------
-- Aether portal is cancelled
+- Aether portal creation support
 
 **Others:**
 -----------------
-
 - Configuration file
-- Command /portal reload for reload configuration file
-- Log when player do action ( enter in portal, create portal )
+- Command /portal reload to reload the configuration file
+- Log when player does an action (enter or create a portal)
 
 🔧**UPDATE:**
 -----------------
@@ -25,4 +24,4 @@ Minecraft Plugin 1.8.X to 1.2.X. Plugin for cancel all portal creation and cance
 - Adding log in console when player do action ( enter in portal, create portal )
 - Adding ItemAPI for next update
 
-***© By Volax, free use.***
+***© Volax, free use.***
