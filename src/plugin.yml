@@ -5,4 +5,4 @@ description: Anti portal
 author: Volax
 commands:
   portal:
-    description: for reload config
+    description: Command to Reload the Config
