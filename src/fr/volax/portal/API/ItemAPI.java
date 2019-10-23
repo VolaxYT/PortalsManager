@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.Arrays;
 
 public class ItemAPI {
-    
+
     private ItemStack is;
 
     public ItemAPI(Material m) {

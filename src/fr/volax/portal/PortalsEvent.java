@@ -38,7 +38,8 @@ public class PortalsEvent implements Listener {
             if(p.getItemInHand().getType() == Material.WATER_BUCKET){
                 if(event.getClickedBlock().getType() == Material.GLOWSTONE){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-aether")) {
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an Aether portal at " + p.getLocation());
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to place water on glowstone at (Player Location)");
+                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
                         event.setCancelled(true);
                     }
                 }
@@ -50,7 +51,8 @@ public class PortalsEvent implements Listener {
                 if(event.getClickedBlock().getType() == Material.ENDER_PORTAL_FRAME){
                     if(!MainPortal.getMain().getConfig().getBoolean("portals.create-end")) {
                         event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an End portal at " + p.getLocation());
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an End portal at (Player Location)");
+                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
                     }
                 }
                 /**
@@ -61,7 +63,9 @@ public class PortalsEvent implements Listener {
                 if (event.getClickedBlock().getType() == Material.OBSIDIAN) {
                     if (!MainPortal.getMain().getConfig().getBoolean("portals.create-nether")) {
                         event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create a Nether portal at " + p.getLocation());
+                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to place fire on obsidian at (Player Location)");
+                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
+                        return;
                     }
                 }
             }
@@ -88,10 +92,11 @@ public class PortalsEvent implements Listener {
     public void onPlayerTeleport(PlayerTeleportEvent event){
         Player p = event.getPlayer();
         PlayerTeleportEvent.TeleportCause cause = event.getCause();
-        
+
         if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
             if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
-                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in an End portal at " + p.getLocation());
+                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in an End portal at (Player Location)");
+                System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
                 event.setCancelled(true);
                 return;
             }
@@ -99,7 +104,8 @@ public class PortalsEvent implements Listener {
 
         if(cause.equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)){
             if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-nether")) {
-                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in a Nether portal at " + p.getLocation());
+                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in a Nether portal at (Player Location)");
+                System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
                 event.setCancelled(true);
                 return;
             }
