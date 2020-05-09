@@ -1,6 +1,6 @@
 # PortalsCanceller
-Minecraft Plugin from 1.8.X to 1.12.X. Plugin to cancel all portal creation and cancel portal teleporting
-
+Minecraft Plugin from 1.8.X to 1.12.X. Plugin to cancel all portal creation and cancel portal teleporting.
+Spigot download link: https://www.spigotmc.org/resources/portals-canceller.78605/
 
 **Permissions:**
 ----------------------------
