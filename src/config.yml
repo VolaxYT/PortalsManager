@@ -1,8 +1,6 @@
 #            PortalsCanceller by Volax
 # Source Code: https://github.com/VolaxYT/PortalsCanceller/
 
-# false = players can't create/enter portal
-# true = players can create/enter portal
 portals:
   #Nether
   create-nether: false
@@ -13,6 +11,16 @@ portals:
   enter-end: false
   #Others
   create-aether: false
+
+messages:
+  prefix: "[PortalsCanceller]"
+  config-reload: "%prefix% The Configuration File has been reloaded"
+  tried-place-aether: "%prefix% %player% tried to place water on glowstone at (Player Location)"
+  tried-place-end: "%prefix% %player% tried to create an End portal at (Player Location)"
+  tried-place-nether: "%prefix% %player% tried to create an Nether portal at (Player Location)"
+  enter-nether: "%prefix% %player% tried to enter in a Nether portal at (Player Location)"
+  enter-end: "%prefix% %player% tried to enter in an End portal at (Player Location)"
+  coordonates: "%prefix% X: %X% Y: %Y% Z: %Z% World: %world%"
 
 permissions:
   reload: "pc.reload"

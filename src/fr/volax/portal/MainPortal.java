@@ -1,7 +1,6 @@
 package fr.volax.portal;
 
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
+import fr.volax.portal.tools.ConfigBuilder;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -11,17 +10,17 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Volax
  */
 
-public class MainPortal extends JavaPlugin implements Listener {
-
+public class MainPortal extends JavaPlugin {
     public static MainPortal instance;
+    public String PREFIX;
 
     @Override
     public void onEnable() {
         instance = this;
 
-        PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new PortalsEvent(), this);
+        PREFIX = ConfigBuilder.getString("messages.prefix");
 
+        getServer().getPluginManager().registerEvents(new PortalsEvent(), this);
         getCommand("portal").setExecutor(new PortalsCommands());
 
         saveDefaultConfig();

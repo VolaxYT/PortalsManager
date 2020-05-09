@@ -1,7 +1,7 @@
 package fr.volax.portal;
 
+import fr.volax.portal.tools.ConfigBuilder;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +19,7 @@ public class PortalsEvent implements Listener {
      */
     @EventHandler
     public void onPortalCreate(PortalCreateEvent event){
-        if(!MainPortal.getMain().getConfig().getBoolean("portals.create-nether")){
+        if(!ConfigBuilder.getBoolean("portals.create-nether")){
             event.setCancelled(true);
         }
     }
@@ -30,58 +30,44 @@ public class PortalsEvent implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event){
         Player p = event.getPlayer();
-        /**
+        /*
          * AETHER ADDON - When player tries to right click with a water bucket on block of glowstone
          * if in config the option : 'portals.create-aether' is set to false -> the event is cancelled
          */
         if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if(p.getItemInHand().getType() == Material.WATER_BUCKET){
-                if(event.getClickedBlock().getType() == Material.GLOWSTONE){
-                    if(!MainPortal.getMain().getConfig().getBoolean("portals.create-aether")) {
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to place water on glowstone at (Player Location)");
-                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
-                        event.setCancelled(true);
-                    }
-                }
-                /**
+            if(p.getItemInHand().getType() == Material.WATER_BUCKET && event.getClickedBlock().getType() == Material.GLOWSTONE && !ConfigBuilder.getBoolean("portals.create-aether")) {
+                System.err.println(ConfigBuilder.getString("messages.tried-place-aether").replaceAll("%player%", p.getName()));
+                System.err.println(ConfigBuilder.getString("messages.coordonates").replaceAll("%X%", String.valueOf(p.getLocation().getX())).replaceAll("%Y%", String.valueOf(p.getLocation().getY())).replaceAll("%Z%", String.valueOf(p.getLocation().getZ())).replaceAll("%world%", p.getLocation().getWorld().getName()));
+                event.setCancelled(true);
+
+                /*
                  * When player tries to right click with a eye of ender on ender portal frame
                  * if in config the option: 'portals.create-end' is set to false -> the event is cancelled
                  */
-            }else if(p.getItemInHand().getType() == Material.EYE_OF_ENDER){
-                if(event.getClickedBlock().getType() == Material.ENDER_PORTAL_FRAME){
-                    if(!MainPortal.getMain().getConfig().getBoolean("portals.create-end")) {
-                        event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to create an End portal at (Player Location)");
-                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
-                    }
-                }
-                /**
+            }else if(p.getItemInHand().getType() == Material.EYE_OF_ENDER && event.getClickedBlock().getType() == Material.ENDER_PORTAL_FRAME && !ConfigBuilder.getBoolean("portals.create-end")) {
+                event.setCancelled(true);
+                System.err.println(ConfigBuilder.getString("messages.tried-place-end").replaceAll("%player%", p.getName()));
+                System.err.println(ConfigBuilder.getString("messages.coordonates").replaceAll("%X%", String.valueOf(p.getLocation().getX())).replaceAll("%Y%", String.valueOf(p.getLocation().getY())).replaceAll("%Z%", String.valueOf(p.getLocation().getZ())).replaceAll("%world%", p.getLocation().getWorld().getName()));
+
+                /*
                  * When player tries to right click with a flint and steel on an obsidian block
                  * if in config the option: 'portals.create-nether' is set to false -> the event is cancelled
                  */
-            }else if(p.getItemInHand().getType() == Material.FLINT_AND_STEEL) {
-                if (event.getClickedBlock().getType() == Material.OBSIDIAN) {
-                    if (!MainPortal.getMain().getConfig().getBoolean("portals.create-nether")) {
-                        event.setCancelled(true);
-                        System.err.println("[PortalsCanceller]" + p.getName() + " tried to place fire on obsidian at (Player Location)");
-                        System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
-                        return;
-                    }
-                }
+            }else if(p.getItemInHand().getType() == Material.FLINT_AND_STEEL && event.getClickedBlock().getType() == Material.OBSIDIAN && !ConfigBuilder.getBoolean("portals.create-nether")) {
+                event.setCancelled(true);
+                System.err.println(ConfigBuilder.getString("messages.tried-place-nether").replaceAll("%player%", p.getName()));
+                System.err.println(ConfigBuilder.getString("messages.coordonates").replaceAll("%X%", String.valueOf(p.getLocation().getX())).replaceAll("%Y%", String.valueOf(p.getLocation().getY())).replaceAll("%Z%", String.valueOf(p.getLocation().getZ())).replaceAll("%world%", p.getLocation().getWorld().getName()));
             }
         }
     }
+
     /**
      * When player tries to use a dispenser for place fire on (all) blocks
      * if in config the option : 'portals.dispenser-use-flint' is set to false -> the event is cancelled
      */
     @EventHandler
     public void onBlockInteract(BlockDispenseEvent event){
-        if(event.getItem().getType() == Material.FLINT_AND_STEEL) {
-            if (!MainPortal.getMain().getConfig().getBoolean("portals.dispenser-use-flint")){
-                event.setCancelled(true);
-            }
-        }
+        if(event.getItem().getType() == Material.FLINT_AND_STEEL && !ConfigBuilder.getBoolean("portals.dispenser-use-flint")) event.setCancelled(true);
     }
     /**
      * When player try to enter in portal of Nether / End, he isn't teleport
@@ -93,22 +79,18 @@ public class PortalsEvent implements Listener {
         Player p = event.getPlayer();
         PlayerTeleportEvent.TeleportCause cause = event.getCause();
 
-        if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
-            if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
-                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in an End portal at (Player Location)");
-                System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
-                event.setCancelled(true);
-                return;
-            }
+        if(cause.equals(PlayerTeleportEvent.TeleportCause.END_PORTAL) && !MainPortal.getMain().getConfig().getBoolean("portals.enter-end")){
+            System.err.println(ConfigBuilder.getString("messages.enter-end").replaceAll("%player%", p.getName()));
+            System.err.println(ConfigBuilder.getString("messages.coordonates").replaceAll("%X%", String.valueOf(p.getLocation().getX())).replaceAll("%Y%", String.valueOf(p.getLocation().getY())).replaceAll("%Z%", String.valueOf(p.getLocation().getZ())).replaceAll("%world%", p.getLocation().getWorld().getName()));
+            event.setCancelled(true);
+            return;
         }
 
-        if(cause.equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)){
-            if(!MainPortal.getMain().getConfig().getBoolean("portals.enter-nether")) {
-                System.err.println("[PortalsCanceller]" + p.getName() + " tried to enter in a Nether portal at (Player Location)");
-                System.err.println("[PortalsCanceller]X: " +p.getLocation().getX() + " Y: " +p.getLocation().getY() + " Z: " +p.getLocation().getZ());
-                event.setCancelled(true);
-                return;
-            }
+        if(cause.equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)&& !MainPortal.getMain().getConfig().getBoolean("portals.enter-nether")) {
+            System.err.println(ConfigBuilder.getString("messages.enter-nether").replaceAll("%player%", p.getName()));
+            System.err.println(ConfigBuilder.getString("messages.coordonates").replaceAll("%X%", String.valueOf(p.getLocation().getX())).replaceAll("%Y%", String.valueOf(p.getLocation().getY())).replaceAll("%Z%", String.valueOf(p.getLocation().getZ())).replaceAll("%world%", p.getLocation().getWorld().getName()));
+            event.setCancelled(true);
+            return;
         }
     }
 }

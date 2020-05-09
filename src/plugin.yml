@@ -1,8 +1,8 @@
 name: PortalsCanceller
-version: 1.0.2
+version: 1.0.03a
 main: fr.volax.portal.MainPortal
 description: Anti portal
 author: Volax
 commands:
   portal:
-    description: Command to Reload the Config
+    description: Main command
