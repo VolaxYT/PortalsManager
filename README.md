@@ -18,8 +18,8 @@ Spigot download link: https://www.spigotmc.org/resources/portals-canceller.78605
 
 🔧**UPDATE:**
 -----------------
-*Version: 1.0.03a*
-- Added all logs messages in configuration file
-- Renamed ItemAPI to ItemBuilder
+*Version: 1.0.03b*
+- Added copyright on all classes
+- Removed ItemBuilder
 
 ***© Volax, free use.***
