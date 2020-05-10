@@ -1,3 +1,20 @@
+/*
+ * PortalsCanceller, a Minecraft portals manipulation toolkit
+ * Copyright (C) Volax <http://volax.fr>
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package fr.volax.portal;
 
 import fr.volax.portal.tools.ConfigBuilder;
@@ -69,6 +86,7 @@ public class PortalsEvent implements Listener {
     public void onBlockInteract(BlockDispenseEvent event){
         if(event.getItem().getType() == Material.FLINT_AND_STEEL && !ConfigBuilder.getBoolean("portals.dispenser-use-flint")) event.setCancelled(true);
     }
+
     /**
      * When player try to enter in portal of Nether / End, he isn't teleport
      * if in config the option : 'portals.enter-nether' is set to false -> the event is cancelled
