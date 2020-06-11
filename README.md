@@ -5,21 +5,21 @@
 Minecraft Plugin from 1.8.X to 1.12.X. Plugin to cancel all portal creation and cancel portal teleporting.
 Spigot download link: <https://www.spigotmc.org/resources/portals-canceller.78605/>
 
-**Permissions:**
+**Permissions**
 ----------------------------
 - pc.reload - For reload configuration
 
-**Addons:**
+**Addons**
 --------------------------
 - Aether portal creation support
 
-**Others:**
+**Others**
 -----------------
 - Configuration file with all things
 - Command /portal reload to reload the configuration file
 - Logs player actions (enter/create a portal)
 
-🔧**UPDATE:**
+🔧**UPDATE**
 -----------------
 *Version: 1.0.03b*
 - Added copyright on all classes
