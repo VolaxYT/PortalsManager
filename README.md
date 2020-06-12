@@ -17,7 +17,7 @@ Spigot download link: <https://www.spigotmc.org/resources/portals-canceller.7860
 - Command /portal reload to reload the configuration file
 - Logs player actions (enter/create a portal)
 
-🔧**UPDATE**
+🔧 **UPDATE**
 -----------------
 *Version: 1.0.03b*
 - Added copyright on all classes
