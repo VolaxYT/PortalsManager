@@ -1,6 +1,4 @@
-# PortalsCanceller
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7613f721cd4543972331d0e4ea0339)](https://app.codacy.com/manual/VolaxYT/PortalsCanceller?utm_source=github.com&utm_medium=referral&utm_content=VolaxYT/PortalsCanceller&utm_campaign=Badge_Grade_Dashboard)
+# PortalsCanceller [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7613f721cd4543972331d0e4ea0339)](https://app.codacy.com/manual/VolaxYT/PortalsCanceller?utm_source=github.com&utm_medium=referral&utm_content=VolaxYT/PortalsCanceller&utm_campaign=Badge_Grade_Dashboard)
 
 Minecraft Plugin from 1.8.X to 1.12.X. Plugin to cancel all portal creation and cancel portal teleporting.
 Spigot download link: <https://www.spigotmc.org/resources/portals-canceller.78605/>
