@@ -23,4 +23,4 @@ Spigot download link: <https://www.spigotmc.org/resources/portals-canceller.7860
 - Added copyright on all classes
 - Removed ItemBuilder
 
-***© Volax, free use.***
+***© Volax.***
