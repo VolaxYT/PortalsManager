@@ -1,20 +1,20 @@
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
-import fr.volax.portal.PortalsCanceler;
+import fr.codemc.portals.PortalsManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public class MetadataUtil {
     public static void setMetadata(String path, Integer variableToSet, Entity entity){
         if(entity.getMetadata(path).stream().anyMatch(metadataValue -> metadataValue.asString() != null))
-            entity.removeMetadata(path, PortalsCanceler.getInstance());
-        entity.setMetadata(path, new FixedMetadataValue(PortalsCanceler.getInstance(), variableToSet));
+            entity.removeMetadata(path, PortalsManager.getInstance());
+        entity.setMetadata(path, new FixedMetadataValue(PortalsManager.getInstance(), variableToSet));
     }
 
     public static void setMetadata(String path, Double variableToSet, Entity entity){
         if(entity.getMetadata(path).stream().anyMatch(metadataValue -> metadataValue.asString() != null))
-            entity.removeMetadata(path, PortalsCanceler.getInstance());
-        entity.setMetadata(path, new FixedMetadataValue(PortalsCanceler.getInstance(), variableToSet));
+            entity.removeMetadata(path, PortalsManager.getInstance());
+        entity.setMetadata(path, new FixedMetadataValue(PortalsManager.getInstance(), variableToSet));
     }
 
     public static int getMetadata(String path, Entity entity) {
@@ -25,8 +25,8 @@ public class MetadataUtil {
 
     public static void setMetadata(String path, String variableToSet, Entity entity){
         if(entity.getMetadata(path).stream().anyMatch(metadataValue -> metadataValue.asString() != null))
-            entity.removeMetadata(path, PortalsCanceler.getInstance());
-        entity.setMetadata(path, new FixedMetadataValue(PortalsCanceler.getInstance(), variableToSet));
+            entity.removeMetadata(path, PortalsManager.getInstance());
+        entity.setMetadata(path, new FixedMetadataValue(PortalsManager.getInstance(), variableToSet));
     }
 
     public static String getMetadataString(String path, Entity entity) {
@@ -44,14 +44,14 @@ public class MetadataUtil {
     public static void addMetadata(String path, Integer variableToSet, Entity entity){
         int variable = (getMetadata(path, entity) + variableToSet);
         if(entity.getMetadata(path).stream().anyMatch(metadataValue -> metadataValue.asString() != null))
-            entity.removeMetadata(path, PortalsCanceler.getInstance());
-        entity.setMetadata(path, new FixedMetadataValue(PortalsCanceler.getInstance(), variable));
+            entity.removeMetadata(path, PortalsManager.getInstance());
+        entity.setMetadata(path, new FixedMetadataValue(PortalsManager.getInstance(), variable));
     }
 
     public static void removeMetadata(String path, Integer variableToSet, Entity entity){
         int variable = (getMetadata(path, entity) - variableToSet);
         if(entity.getMetadata(path).stream().anyMatch(metadataValue -> metadataValue.asString() != null))
-            entity.removeMetadata(path, PortalsCanceler.getInstance());
-        entity.setMetadata(path, new FixedMetadataValue(PortalsCanceler.getInstance(), variable));
+            entity.removeMetadata(path, PortalsManager.getInstance());
+        entity.setMetadata(path, new FixedMetadataValue(PortalsManager.getInstance(), variable));
     }
 }

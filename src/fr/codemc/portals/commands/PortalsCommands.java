@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.volax.portal.commands;
+package fr.codemc.portals.commands;
 
-import fr.volax.portal.PortalsCanceler;
-import fr.volax.portal.gui.WorldsManager;
-import fr.volax.portal.utils.ChatUtil;
-import fr.volax.portal.utils.ConfigBuilder;
+import fr.codemc.portals.PortalsManager;
+import fr.codemc.portals.gui.WorldsManager;
+import fr.codemc.portals.utils.ChatUtil;
+import fr.codemc.portals.utils.ConfigBuilder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,29 +34,23 @@ public class PortalsCommands implements CommandExecutor {
 
         if(args[0].equalsIgnoreCase("reload")){
             if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload")))){
-                PortalsCanceler.getInstance().reloadConfig();
+                PortalsManager.getInstance().reloadConfig();
                 ConfigBuilder.getInstance().configs.getConfig("messages.yml").reload();
                 ChatUtil.sendMessage(sender, ChatUtil.CONFIG_RELOAD);
-                return false;
-            }else{
+            }else
                 ChatUtil.sendMessage(sender, ChatUtil.NO_PERMISSION);
-                return false;
-            }
+            return false;
         }
 
         if(args[0].equalsIgnoreCase("manage")){
             if(sender instanceof Player){
-                if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload")))){
-                    PortalsCanceler.getInstance().getGuiManager().open(((Player) sender), WorldsManager.class);
-                    return false;
-                }else{
+                if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload"))))
+                    PortalsManager.getInstance().getGuiManager().open(((Player) sender), WorldsManager.class);
+                else
                     ChatUtil.sendMessage(sender, ChatUtil.NO_PERMISSION);
-                    return false;
-                }
-            }else{
+            }else
                 ChatUtil.sendMessage(sender, ChatUtil.NOT_PLAYER);
-                return false;
-            }
+            return false;
         }
 
         helpMessage(sender);

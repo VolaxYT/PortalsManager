@@ -1,4 +1,4 @@
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.Arrays;
 
 public class ItemBuilder {
-    private ItemStack is;
+    private final ItemStack is;
 
     public ItemBuilder(Material m) {
         this(m, 1);

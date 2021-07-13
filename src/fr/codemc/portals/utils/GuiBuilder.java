@@ -1,4 +1,4 @@
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

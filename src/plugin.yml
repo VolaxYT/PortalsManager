@@ -1,8 +1,10 @@
-name: PortalsCanceller
-version: 1.0-alpha
-main: fr.volax.portal.PortalsCanceler
-description: The Ultimate Plugin to control the inter-world movement of your players
+name: PortalsManager
+version: 1.0-beta
+main: fr.codemc.portals.PortalsManager
+description: The Ultimate Plugin to control all the portals of all your worlds.
 author: Volax
 commands:
   portals:
-    description: Main command
+    description: Main command of the plugin
+  currentWorld:
+    description: Get the world you are in

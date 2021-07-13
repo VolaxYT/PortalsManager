@@ -1,6 +1,6 @@
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
-import fr.volax.portal.PortalsCanceler;
+import fr.codemc.portals.PortalsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,13 +14,13 @@ public class GuiManager implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event){
-        Player player = (Player) event.getWhoClicked();
-        Inventory inv = event.getInventory();
+        Player    player  = (Player) event.getWhoClicked();
+        Inventory inv     = event.getInventory();
         ItemStack current = event.getCurrentItem();
 
         if(event.getCurrentItem() == null) return;
 
-        PortalsCanceler.getInstance().getRegisteredMenus().values().stream()
+        PortalsManager.getInstance().getRegisteredMenus().values().stream()
                 .filter(menu -> inv.getName().equalsIgnoreCase(menu.name()))
                 .forEach(menu -> {
                     menu.onClick(player, inv, current, event.getSlot());
@@ -29,13 +29,13 @@ public class GuiManager implements Listener {
     }
 
     public void addMenu(GuiBuilder m){
-        PortalsCanceler.getInstance().getRegisteredMenus().put(m.getClass(), m);
+        PortalsManager.getInstance().getRegisteredMenus().put(m.getClass(), m);
     }
 
     public void open(Player player, Class<? extends GuiBuilder> gClass){
-        if(!PortalsCanceler.getInstance().getRegisteredMenus().containsKey(gClass)) return;
+        if(!PortalsManager.getInstance().getRegisteredMenus().containsKey(gClass)) return;
 
-        GuiBuilder menu = PortalsCanceler.getInstance().getRegisteredMenus().get(gClass);
+        GuiBuilder menu = PortalsManager.getInstance().getRegisteredMenus().get(gClass);
         Inventory inv = Bukkit.createInventory(null, menu.getSize(), menu.name());
         menu.contents(player, inv);
 
@@ -44,6 +44,6 @@ public class GuiManager implements Listener {
             public void run() {
                 player.openInventory(inv);
             }
-        }.runTaskLater(PortalsCanceler.getInstance(), 1);
+        }.runTaskLater(PortalsManager.getInstance(), 1);
     }
 }

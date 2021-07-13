@@ -15,16 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.volax.portal;
+package fr.codemc.portals;
 
-import fr.volax.portal.commands.PortalsCommands;
-import fr.volax.portal.gui.WorldSettings;
-import fr.volax.portal.gui.WorldsManager;
-import fr.volax.portal.listeners.PortalsListener;
-import fr.volax.portal.utils.ConfigBuilder;
-import fr.volax.portal.utils.FileManager;
-import fr.volax.portal.utils.GuiBuilder;
-import fr.volax.portal.utils.GuiManager;
+import fr.codemc.portals.commands.CurrentWorldCommands;
+import fr.codemc.portals.commands.PortalsCommands;
+import fr.codemc.portals.gui.WorldSettings;
+import fr.codemc.portals.gui.WorldsManager;
+import fr.codemc.portals.listeners.PortalsListener;
+import fr.codemc.portals.utils.ConfigBuilder;
+import fr.codemc.portals.utils.FileManager;
+import fr.codemc.portals.utils.GuiBuilder;
+import fr.codemc.portals.utils.GuiManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -39,18 +40,18 @@ import java.util.Map;
  * @author Volax
  */
 
-public class PortalsCanceler extends JavaPlugin {
-    public static PortalsCanceler instance;
-    private GuiManager guiManager;
-
-    public final File debugFile = new File(getDataFolder(), "logs.txt");
-    private Map<Class<? extends GuiBuilder>, GuiBuilder> registeredMenus;
+public class PortalsManager extends JavaPlugin {
+    public  static PortalsManager                               instance;
+    private        GuiManager                                   guiManager;
+    public         File                                         debugFile;
+    private        Map<Class<? extends GuiBuilder>, GuiBuilder> registeredMenus;
 
     @Override
     public void onEnable() {
         instance = this;
         this.registeredMenus = new HashMap<>();
         this.guiManager = new GuiManager();
+        this.debugFile = new File(getDataFolder(), "logs.txt");
 
         ConfigBuilder configBuilder = new ConfigBuilder(new FileManager(this));
         saveDefaultConfig();
@@ -59,6 +60,7 @@ public class PortalsCanceler extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PortalsListener(), this);
         getServer().getPluginManager().registerEvents(new GuiManager(), this);
         getCommand("portals").setExecutor(new PortalsCommands());
+        getCommand("currentWorld").setExecutor(new CurrentWorldCommands());
 
         this.guiManager.addMenu(new WorldsManager());
         this.guiManager.addMenu(new WorldSettings());
@@ -72,7 +74,7 @@ public class PortalsCanceler extends JavaPlugin {
         }
     }
 
-    public static PortalsCanceler getInstance() {
+    public static PortalsManager getInstance() {
         return instance;
     }
 

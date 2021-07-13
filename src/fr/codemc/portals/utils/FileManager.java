@@ -1,4 +1,4 @@
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class FileManager {
-    private final JavaPlugin plugin;
+    private final JavaPlugin              plugin;
     private final HashMap<String, Config> configs = new HashMap<>();
 
     public FileManager(JavaPlugin plugin) {

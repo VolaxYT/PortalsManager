@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.volax.portal.utils;
+package fr.codemc.portals.utils;
 
-import fr.volax.portal.PortalsCanceler;
+import fr.codemc.portals.PortalsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigBuilder {
-    public FileManager configs;
+    public        FileManager   configs;
     public static ConfigBuilder instance;
 
     public ConfigBuilder(FileManager fileManager) {
@@ -46,7 +46,7 @@ public class ConfigBuilder {
     }
 
     public double getDouble(String path) {
-        return PortalsCanceler.getInstance().getConfig().getDouble(path);
+        return PortalsManager.getInstance().getConfig().getDouble(path);
     }
 
     public Boolean getBoolean(String path, String config){
@@ -75,21 +75,21 @@ public class ConfigBuilder {
     }
 
     public String getString(String path){
-        return PortalsCanceler.getInstance().getConfig().getString(path).replaceAll("&","§");
+        return PortalsManager.getInstance().getConfig().getString(path).replaceAll("&","§");
     }
 
     public int getInt(String path){
-        return PortalsCanceler.getInstance().getConfig().getInt(path);
+        return PortalsManager.getInstance().getConfig().getInt(path);
     }
 
     public boolean getBoolean(String path){
-        return PortalsCanceler.getInstance().getConfig().getBoolean(path);
+        return PortalsManager.getInstance().getConfig().getBoolean(path);
     }
 
     public void set(String path, Object data){
-        PortalsCanceler.getInstance().getConfig().set(path, data);
-        PortalsCanceler.getInstance().saveConfig();
-        PortalsCanceler.getInstance().reloadConfig();
+        PortalsManager.getInstance().getConfig().set(path, data);
+        PortalsManager.getInstance().saveConfig();
+        PortalsManager.getInstance().reloadConfig();
     }
 
     public void set(String path, Object data, String config){
@@ -99,11 +99,11 @@ public class ConfigBuilder {
     }
 
     public List<?> getList(String path){
-        return PortalsCanceler.getInstance().getConfig().getList(path);
+        return PortalsManager.getInstance().getConfig().getList(path);
     }
 
     public Object get(String path){
-        return PortalsCanceler.getInstance().getConfig().get(path);
+        return PortalsManager.getInstance().getConfig().get(path);
     }
 
     public Object get(String path, String config){
@@ -115,7 +115,7 @@ public class ConfigBuilder {
     }
 
     public List<String> getListString(String path){
-        return (List<String>) PortalsCanceler.getInstance().getConfig().getList(path);
+        return (List<String>) PortalsManager.getInstance().getConfig().getList(path);
     }
 
     public List<String> getListString(String path, String config){
@@ -123,7 +123,7 @@ public class ConfigBuilder {
     }
 
     public List<Integer> getListInt(String path){
-        return (List<Integer>) PortalsCanceler.getInstance().getConfig().getList(path);
+        return (List<Integer>) PortalsManager.getInstance().getConfig().getList(path);
     }
 
     public List<Integer> getListInt(String path, String config){
