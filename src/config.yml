@@ -2,25 +2,17 @@
 # Source Code: https://github.com/VolaxYT/PortalsCanceller/
 
 portals:
-  #Nether
-  create-nether: false
-  enter-nether: false
-  dispenser-use-flint: false
-  #End
-  create-end: false
-  enter-end: false
-  #Others
-  create-aether: false
+  nether:
+    create-portals-not-allowed-worlds: []
+    enter-portals-not-allowed-worlds: []
+  end:
+    create-portals-not-allowed-worlds: []
+    enter-portals-not-allowed-worlds: []
 
-messages:
-  prefix: "[PortalsCanceller]"
-  config-reload: "%prefix% The Configuration File has been reloaded"
-  tried-place-aether: "%prefix% %player% tried to place water on glowstone at (Player Location)"
-  tried-place-end: "%prefix% %player% tried to create an End portal at (Player Location)"
-  tried-place-nether: "%prefix% %player% tried to create an Nether portal at (Player Location)"
-  enter-nether: "%prefix% %player% tried to enter in a Nether portal at (Player Location)"
-  enter-end: "%prefix% %player% tried to enter in an End portal at (Player Location)"
-  coordonates: "%prefix% X: %X% Y: %Y% Z: %Z% World: %world%"
+logs:
+  console: true
+  file: false
 
 permissions:
   reload: "pc.reload"
+  manage: "pc.manage"

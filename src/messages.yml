@@ -1,0 +1,15 @@
+prefix: "&6[&ePortalsCanceller&6]"
+portals-command:
+  config-reload: "&eThe configuration file has been reloaded"
+  not-player: "&cYou must be a player to execute this command !"
+  no-permission: "&cYou don't have permission to execute this command !"
+  help-message: "&eUsage: /portals <reload|manage>"
+
+tried-create-nether-notallowed: "&6%player% &etried to create an nether portal at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsCanceller."
+tried-create-nether-allowed: "&6%player% &ecreated an nether portal successfully at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
+
+tried-create-end-notallowed: "&6%player% &etried to place an eye of ender at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsCanceller."
+tried-create-end-allowed: "&6%player% &eplaced an eye of ender to open an end portal at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
+
+tried-enter-nether: "%player% tried to enter in a Nether portal at X: %X% Y: %Y% Z: %Z% World: %world%"
+tried-enter-end: "%player% tried to enter in an End portal at X: %X% Y: %Y% Z: %Z% World: %world%"

@@ -1,8 +1,8 @@
 name: PortalsCanceller
-version: 1.0.03b
-main: fr.volax.portal.MainPortal
-description: Anti portal
+version: 1.0-alpha
+main: fr.volax.portal.PortalsCanceler
+description: The Ultimate Plugin to control the inter-world movement of your players
 author: Volax
 commands:
-  portal:
+  portals:
     description: Main command
