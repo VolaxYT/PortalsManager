@@ -20,3 +20,6 @@ permissions:
   reload: "pm.reload"
   manage: "pm.manage"
   currentworld: "pm.currentworld"
+
+# french or english
+language: english

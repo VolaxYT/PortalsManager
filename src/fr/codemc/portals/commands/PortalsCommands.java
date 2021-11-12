@@ -21,6 +21,7 @@ import fr.codemc.portals.PortalsManager;
 import fr.codemc.portals.gui.WorldsManager;
 import fr.codemc.portals.utils.ChatUtil;
 import fr.codemc.portals.utils.ConfigBuilder;
+import fr.codemc.portals.utils.LanguagePreference;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -30,15 +31,15 @@ public class PortalsCommands implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(args.length != 1) { helpMessage(sender); return false; }
+        if(args.length != 1) { ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.help-message")); return false; }
 
         if(args[0].equalsIgnoreCase("reload")){
             if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload")))){
                 PortalsManager.getInstance().reloadConfig();
                 ConfigBuilder.getInstance().configs.getConfig("messages.yml").reload();
-                ChatUtil.sendMessage(sender, ChatUtil.CONFIG_RELOAD);
+                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.config-reload"));
             }else
-                ChatUtil.sendMessage(sender, ChatUtil.NO_PERMISSION);
+                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
             return false;
         }
 
@@ -47,17 +48,13 @@ public class PortalsCommands implements CommandExecutor {
                 if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload"))))
                     PortalsManager.getInstance().getGuiManager().open(((Player) sender), WorldsManager.class);
                 else
-                    ChatUtil.sendMessage(sender, ChatUtil.NO_PERMISSION);
+                    ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
             }else
-                ChatUtil.sendMessage(sender, ChatUtil.NOT_PLAYER);
+                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.not-player"));
             return false;
         }
 
-        helpMessage(sender);
+        ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.help-message"));
         return true;
-    }
-
-    private void helpMessage(CommandSender sender) {
-        ChatUtil.sendMessage(sender, ChatUtil.HELP_MESSAGE);
     }
 }

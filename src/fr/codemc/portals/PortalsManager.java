@@ -34,8 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Small and easy Portals Canceller for Minecraft 1.8 to 1.17!
- * The project is on https://github.com/VolaxYT/PortalsCanceller
+ * Small and easy Portals Manager for Minecraft 1.8 to 1.17!
+ * The project is on https://github.com/VolaxYT/Manager
  *
  * @author Volax
  */
@@ -59,6 +59,7 @@ public class PortalsManager extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PortalsListener(), this);
         getServer().getPluginManager().registerEvents(new GuiManager(), this);
+
         getCommand("portals").setExecutor(new PortalsCommands());
         getCommand("currentWorld").setExecutor(new CurrentWorldCommands());
 
