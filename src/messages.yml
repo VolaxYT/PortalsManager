@@ -8,7 +8,7 @@ english:
     not-player: "&cYou must be a player to execute this command !"
     no-permission: "&cYou don't have permission to execute this command !"
     portals:
-      help-message: "&eUsage: /portals <reload|manage>"
+      help-message: "&eUsage: /portals <reload|manage|language>"
       config-reload: "&eConfiguration files has been reloaded."
     currentworld:
       get-world: "&eYou are currently in the world: &6%world%&e."
@@ -36,15 +36,15 @@ french:
       config-reload: "&eLes fichiers de configuration ont bien été rechargés."
     currentworld:
       get-world: "&eVous êtes actuellement dans le monde: &6%world%&e."
-  create-nether-prohibited: "&6%player% &etried to create an nether portal at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsManager."
-  create-nether-allowed: "&6%player% &ecreated an nether portal successfully at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
-  enter-nether-prohibited: "&6%player% &etried to enter into a nether portal at &eX: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsManager."
-  enter-nether-allowed: "&6%player% &eentered into a nether portal at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
+  create-nether-prohibited: "&6Le joueur %player% &ea essayé de créer un portal du nether en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world% &ecependant cela a été annulé par PortalsManager."
+  create-nether-allowed: "&6Le joueur %player% &ea crée un portail avec succés en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world%&e."
+  enter-nether-prohibited: "&6Le joueur %player% &ea essayé de rentrer dans un portal du nether en &eX: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world% &ecependant cela a été annulé par PortalsManager."
+  enter-nether-allowed: "&6Le joueur %player% &eest entré dans un portal du nether en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world%&e."
 
-  create-end-prohibited: "&6Le joueur %player% &ea essayé de placer un oeuil de l'ender en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world% &ecependant cela a été annulé par PortalsManager."
-  create-end-allowed: "&6%player% &eplaced an eye of ender to open an end portal en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
-  enter-end-prohibited: "&6%player% &etried to enter into an end portal en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsManager."
-  enter-end-allowed: "&6%player% &eentered into an end portal en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
+  create-end-prohibited: "&6Le joueur %player% &ea essayé de placer un œuil de l'ender en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world% &ecependant cela a été annulé par PortalsManager."
+  create-end-allowed: "&6Le joueur %player% &ea placé un œuil de l'ender pour ouvrir un portail de l'end en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world%&e."
+  enter-end-prohibited: "&6Le joueur %player% &ea essayé d'entrer dans un portail de l'end en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world% &ecependant cela a été annulé par PortalsManager."
+  enter-end-allowed: "&6Le joueur %player% &eest entré dans un portail de l'end en X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eMonde: &6%world%&e."
 
   cant-enter-nether: "&cVous ne pouvez pas entrez dans un portail du nether !"
   cant-enter-end: "&cVous ne pouvez pas entrez dans un portail de l'end !"

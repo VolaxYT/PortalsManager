@@ -21,6 +21,7 @@ import fr.codemc.portals.PortalsManager;
 import fr.codemc.portals.utils.BlockUtil;
 import fr.codemc.portals.utils.ChatUtil;
 import fr.codemc.portals.utils.ConfigBuilder;
+import fr.codemc.portals.utils.LanguagePreference;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -56,7 +57,7 @@ public class PortalsListener implements Listener {
                 int x = (int) event.getClickedBlock().getLocation().getX(), y = (int) event.getClickedBlock().getLocation().getY(), z = (int) event.getClickedBlock().getLocation().getZ();
                 List<World> worlds = ConfigBuilder.getInstance().getListWorlds("portals.end.create-portals-not-allowed-worlds");
                 if (worlds.contains(world)) {
-                    String message = ChatUtil.CREATE_END_PROHIBITED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                    String message = LanguagePreference.formatMessage("create-end-prohibited").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                     Block block = event.getClickedBlock();
 
                     event.setCancelled(true);
@@ -66,10 +67,10 @@ public class PortalsListener implements Listener {
                         if (ConfigBuilder.getInstance().getBoolean("logs.file"))
                             ChatUtil.logMessage(message);
                         if (ConfigBuilder.getInstance().getBoolean("logs.player"))
-                            ChatUtil.sendMessage(player, ChatUtil.CANT_CREATE_END);
+                            ChatUtil.sendMessage(player, LanguagePreference.formatMessage("cant-create-end"));
                     }
                 } else {
-                    String message = ChatUtil.CREATE_END_ALLOWED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                    String message = LanguagePreference.formatMessage("create-end-allowed").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                     Block block = event.getClickedBlock();
 
                     if(block.getData() <= 3){
@@ -85,20 +86,20 @@ public class PortalsListener implements Listener {
 
                 if (worlds.contains(world)) {
                     event.setCancelled(true);
-                    String message = ChatUtil.CREATE_NETHER_PROHIBITED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                    String message = LanguagePreference.formatMessage("create-nether-prohibited").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                     if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                         ChatUtil.consoleMessage(message);
                     if (ConfigBuilder.getInstance().getBoolean("logs.file"))
                         ChatUtil.logMessage(message);
                     if (ConfigBuilder.getInstance().getBoolean("logs.player"))
-                        ChatUtil.sendMessage(player, ChatUtil.CANT_CREATE_NETHER);
+                        ChatUtil.sendMessage(player, LanguagePreference.formatMessage("cant-create-nether"));
                 } else {
                     if (BlockUtil.doesBlockAround(event.getClickedBlock(), Material.PORTAL)) {
                         return;
                     }
                     Bukkit.getScheduler().scheduleSyncDelayedTask(PortalsManager.getInstance(), () -> {
                         if (BlockUtil.doesBlockAround(event.getClickedBlock(), Material.PORTAL)) {
-                            String message = ChatUtil.CREATE_NETHER_ALLOWED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                            String message = LanguagePreference.formatMessage("create-nether-allowed").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                             if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                                 ChatUtil.consoleMessage(message);
                             if (ConfigBuilder.getInstance().getBoolean("logs.file"))
@@ -120,17 +121,17 @@ public class PortalsListener implements Listener {
         if(event.getCause().equals(PlayerTeleportEvent.TeleportCause.END_PORTAL)){
             List<World> worlds = ConfigBuilder.getInstance().getListWorlds("portals.end.enter-portals-not-allowed-worlds");
             if(worlds.contains(world)){
-                String message = ChatUtil.ENTER_END_PROHIBITED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                String message = LanguagePreference.formatMessage("enter-end-prohibited").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                 if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                     ChatUtil.consoleMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.file"))
                     ChatUtil.logMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.player"))
-                    ChatUtil.sendMessage(player, ChatUtil.CANT_ENTER_END);
+                    ChatUtil.sendMessage(player, LanguagePreference.formatMessage("cant-enter-end"));
                 player.teleport(player.getLocation().clone().add(0,2,3));
                 event.setCancelled(true);
             }else{
-                String message = ChatUtil.ENTER_END_ALLOW.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                String message = LanguagePreference.formatMessage("enter-end-allowed").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                 if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                     ChatUtil.consoleMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.file"))
@@ -141,16 +142,16 @@ public class PortalsListener implements Listener {
         if(event.getCause().equals(PlayerTeleportEvent.TeleportCause.NETHER_PORTAL)) {
             List<World> worlds = ConfigBuilder.getInstance().getListWorlds("portals.nether.enter-portals-not-allowed-worlds");
             if(worlds.contains(world)){
-                String message = ChatUtil.ENTER_NETHER_PROHIBITED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                String message = LanguagePreference.formatMessage("enter-nether-prohibited").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                 if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                     ChatUtil.consoleMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.file"))
                     ChatUtil.logMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.player"))
-                    ChatUtil.sendMessage(player, ChatUtil.CANT_ENTER_NETHER);
+                    ChatUtil.sendMessage(player, LanguagePreference.formatMessage("cant-enter-nether"));
                 event.setCancelled(true);
             }else{
-                String message = ChatUtil.ENTER_NETHER_ALLOWED.replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
+                String message = LanguagePreference.formatMessage("enter-nether-allowed").replaceAll("%player%", playerName).replaceAll("%X%", String.valueOf(x)).replaceAll("%Y%", String.valueOf(y)).replaceAll("%Z%", String.valueOf(z)).replaceAll("%world%", world.getName());
                 if (ConfigBuilder.getInstance().getBoolean("logs.console"))
                     ChatUtil.consoleMessage(message);
                 if (ConfigBuilder.getInstance().getBoolean("logs.file"))

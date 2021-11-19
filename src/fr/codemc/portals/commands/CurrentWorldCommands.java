@@ -12,12 +12,12 @@ public class CurrentWorldCommands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player){
-            Player player = (Player)sender;
+            Player player =(Player)sender;
             if(player.hasPermission(ConfigBuilder.getInstance().getString(("permissions.currentworld"))))
                 ChatUtil.sendMessage(player, LanguagePreference.formatMessage("commands.currentworld.get-world").replaceAll("%world%", player.getWorld().getName()));
             else
                 ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
-        }else
+        } else
             ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.not-player"));
         return false;
     }

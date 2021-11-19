@@ -13,19 +13,6 @@ import java.util.Date;
 public class ChatUtil {
     public static final String PREFIX = ConfigBuilder.getInstance().getString("prefix", "messages.yml");
 
-    public static final String CREATE_NETHER_PROHIBITED   = ConfigBuilder.getInstance().getString("create-nether-prohibited", "messages.yml");
-    public static final String CREATE_NETHER_ALLOWED      = ConfigBuilder.getInstance().getString("create-nether-allowed", "messages.yml");
-    public static final String ENTER_NETHER_PROHIBITED    = ConfigBuilder.getInstance().getString("enter-nether-prohibited", "messages.yml");
-    public static final String ENTER_NETHER_ALLOWED       = ConfigBuilder.getInstance().getString("enter-nether-allowed", "messages.yml");
-    public static final String CREATE_END_PROHIBITED      = ConfigBuilder.getInstance().getString("create-end-prohibited", "messages.yml");
-    public static final String CREATE_END_ALLOWED         = ConfigBuilder.getInstance().getString("create-end-allowed", "messages.yml");
-    public static final String ENTER_END_PROHIBITED       = ConfigBuilder.getInstance().getString("enter-end-prohibited", "messages.yml");
-    public static final String ENTER_END_ALLOW            = ConfigBuilder.getInstance().getString("enter-end-allowed", "messages.yml");
-    public static final String CANT_ENTER_NETHER          = ConfigBuilder.getInstance().getString("cant-enter-nether", "messages.yml");
-    public static final String CANT_CREATE_NETHER         = ConfigBuilder.getInstance().getString("cant-create-nether", "messages.yml");
-    public static final String CANT_ENTER_END             = ConfigBuilder.getInstance().getString("cant-enter-end", "messages.yml");
-    public static final String CANT_CREATE_END            = ConfigBuilder.getInstance().getString("cant-create-end", "messages.yml");
-
     public static void sendMessage(CommandSender sender, String message){
         sender.sendMessage(PREFIX + " " + message);
     }
