@@ -18,6 +18,7 @@
 package fr.codemc.portals.commands;
 
 import fr.codemc.portals.PortalsManager;
+import fr.codemc.portals.gui.PluginSettings;
 import fr.codemc.portals.gui.WorldsManager;
 import fr.codemc.portals.utils.ChatUtil;
 import fr.codemc.portals.utils.ConfigBuilder;
@@ -43,10 +44,21 @@ public class PortalsCommands implements CommandExecutor {
             return false;
         }
 
-        if(args[0].equalsIgnoreCase("manage")){
+        if(args[0].equalsIgnoreCase("worlds")){
             if(sender instanceof Player){
-                if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload"))))
+                if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.worlds"))))
                     PortalsManager.getInstance().getGuiManager().open(((Player) sender), WorldsManager.class);
+                else
+                    ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
+            }else
+                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.not-player"));
+            return false;
+        }
+
+        if(args[0].equalsIgnoreCase("settings")){
+            if(sender instanceof Player){
+                if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.settings"))))
+                    PortalsManager.getInstance().getGuiManager().open(((Player) sender), PluginSettings.class);
                 else
                     ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
             }else

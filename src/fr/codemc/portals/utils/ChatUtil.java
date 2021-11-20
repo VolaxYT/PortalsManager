@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ChatUtil {
-    public static final String PREFIX = ConfigBuilder.getInstance().getString("prefix", "messages.yml");
+    public static final String PREFIX = ConfigBuilder.getInstance().getString("prefix");
 
     public static void sendMessage(CommandSender sender, String message){
         sender.sendMessage(PREFIX + " " + message);

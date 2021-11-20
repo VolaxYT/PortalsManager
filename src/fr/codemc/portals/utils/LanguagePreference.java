@@ -9,10 +9,10 @@ public class LanguagePreference {
         String language = getLanguage();
 
         if (language.equalsIgnoreCase("english"))
-            return ConfigBuilder.getInstance().getString("english." + messageConfigName, "messages.yml").replaceAll("&", "§");
+            return ConfigBuilder.getInstance().getString(messageConfigName, "english.yml").replaceAll("&", "§");
 
         if (language.equalsIgnoreCase("french"))
-            return ConfigBuilder.getInstance().getString("french." + messageConfigName, "messages.yml").replaceAll("&", "§");
+            return ConfigBuilder.getInstance().getString(messageConfigName, "french.yml").replaceAll("&", "§");
 
         throw new NullPointerException("Error, language " + language + " not found !");
     }

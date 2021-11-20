@@ -55,7 +55,8 @@ public class PortalsManager extends JavaPlugin {
 
         ConfigBuilder configBuilder = new ConfigBuilder(new FileManager(this));
         saveDefaultConfig();
-        configBuilder.configs.getConfig("messages.yml").saveDefaultConfig();
+        configBuilder.configs.getConfig("french.yml").saveDefaultConfig();
+        configBuilder.configs.getConfig("english.yml").saveDefaultConfig();
 
         getServer().getPluginManager().registerEvents(new PortalsListener(), this);
         getServer().getPluginManager().registerEvents(new GuiManager(), this);

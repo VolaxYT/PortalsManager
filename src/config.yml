@@ -18,8 +18,10 @@ logs:
 
 permissions:
   reload: "pm.reload"
-  manage: "pm.manage"
+  worlds: "pm.worlds"
+  settings: "pm.settings"
   currentworld: "pm.currentworld"
 
 # french or english
 language: english
+prefix: "&6[&ePortalsManager&6]"
