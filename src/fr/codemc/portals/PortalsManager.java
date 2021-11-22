@@ -67,7 +67,7 @@ public class PortalsManager extends JavaPlugin {
 
         this.guiManager.addMenu(new WorldsManager());
         this.guiManager.addMenu(new WorldSettings());
-        this.guiManager.addMenu(new PluginSettings());
+        this.guiManager.addMenu(new PluginSettings() );
 
         if(!debugFile.exists()) {
             try {
