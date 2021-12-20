@@ -2,11 +2,11 @@
 # Source Code: https://github.com/VolaxYT/PortalsManager/
 
 portals:
-  # Don't touch at this (do it in game GUI /portals manage)
+  # Don't touch at this (do it in game GUI /portals worlds)
   nether:
     create-portals-not-allowed-worlds: []
     enter-portals-not-allowed-worlds: []
-  # Don't touch at this (do it in game GUI /portals manage)
+  # Don't touch at this (do it in game GUI /portals worlds)
   end:
     create-portals-not-allowed-worlds: []
     enter-portals-not-allowed-worlds: []
@@ -22,6 +22,6 @@ permissions:
   settings: "pm.settings"
   currentworld: "pm.currentworld"
 
-# french or english
+# Don't touch at this (do it in game GUI /portals settings)
 language: english
 prefix: "&6[&ePortalsManager&6]"

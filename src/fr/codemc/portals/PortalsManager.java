@@ -19,6 +19,7 @@ package fr.codemc.portals;
 
 import fr.codemc.portals.commands.CurrentWorldCommands;
 import fr.codemc.portals.commands.PortalsCommands;
+import fr.codemc.portals.gui.PluginLanguage;
 import fr.codemc.portals.gui.PluginSettings;
 import fr.codemc.portals.gui.WorldSettings;
 import fr.codemc.portals.gui.WorldsManager;
@@ -68,6 +69,7 @@ public class PortalsManager extends JavaPlugin {
         this.guiManager.addMenu(new WorldsManager());
         this.guiManager.addMenu(new WorldSettings());
         this.guiManager.addMenu(new PluginSettings());
+        this.guiManager.addMenu(new PluginLanguage());
 
         if(!debugFile.exists()) {
             try {

@@ -38,6 +38,8 @@ public class PortalsCommands implements CommandExecutor {
             if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload")))){
                 PortalsManager.getInstance().reloadConfig();
                 ConfigBuilder.getInstance().configs.getConfig("messages.yml").reload();
+                ConfigBuilder.getInstance().configs.getConfig("english.yml").reload();
+                ConfigBuilder.getInstance().configs.getConfig("french.yml").reload();
                 ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.config-reload"));
             }else
                 ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
