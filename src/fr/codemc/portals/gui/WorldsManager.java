@@ -1,10 +1,7 @@
 package fr.codemc.portals.gui;
 
 import fr.codemc.portals.PortalsManager;
-import fr.codemc.portals.utils.ItemBuilder;
-import fr.codemc.portals.utils.GuiBuilder;
-import fr.codemc.portals.utils.MetadataUtil;
-import fr.codemc.portals.utils.Skull;
+import fr.codemc.portals.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -18,7 +15,7 @@ import java.util.List;
 public class WorldsManager implements GuiBuilder {
     @Override
     public String name() {
-        return "§eWorlds Manager";
+        return "§eManager of Worlds";
     }
 
     @Override
@@ -44,18 +41,20 @@ public class WorldsManager implements GuiBuilder {
                 end.add(world);
         }
 
+        String configureWorld = Translator.translateMessage("gui.worlds-manager.items.configure-world.name");
+
         for(World world : normal){
-            inv.setItem(slot, new ItemBuilder(Material.SKULL_ITEM, 1, (short)3).setSkullOwner("BlockminersTV").setName("§eConfigure the world §6" + world.getName()).toItemStack());
+            inv.setItem(slot, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/1af99db283263471b8f6c62c9a937782eecccc2572adcf0dd4f60ebc8001a4a7")).setName(configureWorld.replaceAll("%worldName%", world.getName())).toItemStack());
             slot++;
         }
 
         for(World world : nether){
-            inv.setItem(slot, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/bb508c779f312daff337d137f34dd365a3f9c132bd92eb0c5ffab7c5b4a55c5")).setName("§eConfigure the world §6" + world.getName()).toItemStack());
+            inv.setItem(slot, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/bb508c779f312daff337d137f34dd365a3f9c132bd92eb0c5ffab7c5b4a55c5")).setName(configureWorld.replaceAll("%worldName%", world.getName())).toItemStack());
             slot++;
         }
 
         for(World world : end){
-            inv.setItem(slot, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/19f21f5d883316fd65a9366f32a33013182e3381dec21c17c78355d9bf4f0")).setName("§eConfigure the world §6" + world.getName()).toItemStack());
+            inv.setItem(slot, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/19f21f5d883316fd65a9366f32a33013182e3381dec21c17c78355d9bf4f0")).setName(configureWorld.replaceAll("%worldName%", world.getName())).toItemStack());
             slot++;
         }
     }
@@ -65,6 +64,7 @@ public class WorldsManager implements GuiBuilder {
         if(current == null || !current.hasItemMeta() || current.getType() == null || current.getItemMeta().getDisplayName() == null)
             return;
 
+        //todo fix this fucking shit omg substring d'une config multi-lang aahhhhh
         String worldName = current.getItemMeta().getDisplayName().substring(24);
         if(Bukkit.getWorlds().contains(Bukkit.getWorld(worldName))){
             MetadataUtil.setMetadata("lastMenu", worldName, player);

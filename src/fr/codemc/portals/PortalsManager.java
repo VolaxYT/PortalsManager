@@ -24,16 +24,15 @@ import fr.codemc.portals.gui.PluginSettings;
 import fr.codemc.portals.gui.WorldSettings;
 import fr.codemc.portals.gui.WorldsManager;
 import fr.codemc.portals.listeners.PortalsListener;
-import fr.codemc.portals.utils.ConfigBuilder;
-import fr.codemc.portals.utils.FileManager;
-import fr.codemc.portals.utils.GuiBuilder;
-import fr.codemc.portals.utils.GuiManager;
+import fr.codemc.portals.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Small and easy Portals Manager for Minecraft 1.8 to 1.17!
@@ -44,9 +43,10 @@ import java.util.Map;
 
 public class PortalsManager extends JavaPlugin {
     public  static PortalsManager                               instance;
-    private        GuiManager                                   guiManager;
+    private GuiManager guiManager;
     public         File                                         debugFile;
     private        Map<Class<? extends GuiBuilder>, GuiBuilder> registeredMenus;
+    private int serverVersion;
 
     @Override
     public void onEnable() {
@@ -70,6 +70,22 @@ public class PortalsManager extends JavaPlugin {
         this.guiManager.addMenu(new WorldSettings());
         this.guiManager.addMenu(new PluginSettings());
         this.guiManager.addMenu(new PluginLanguage());
+
+        Pattern versionPattern = Pattern.compile("1\\.(\\d{1,2})(?:\\.(\\d{1,2}))?");
+        Matcher versionMatcher = versionPattern.matcher(this.getServer().getVersion());
+        Integer versionInteger = null;
+        if (versionMatcher.find()) {
+            try {
+                int minor = Integer.parseInt(versionMatcher.group(1));
+                String patchS = versionMatcher.group(2);
+                int patch = (patchS == null || patchS.isEmpty()) ? 0 : Integer.parseInt(patchS);
+                versionInteger = (minor * 100) + patch;
+                getLogger().info("Detection de Minecraft " + versionMatcher.group());
+            } catch (NumberFormatException ignored) {}
+        }
+
+        serverVersion = versionInteger;
+        getServer().getConsoleSender().sendMessage("§bVersion du serveur: " + serverVersion);
 
         if(!debugFile.exists()) {
             try {

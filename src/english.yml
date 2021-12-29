@@ -9,6 +9,7 @@ commands:
     config-reload: "&eConfiguration files has been reloaded."
   currentworld:
     get-world: "&eYou are currently in the world: &6%world%&e."
+
 create-nether-prohibited: "&6%player% &etried to create an nether portal at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsManager."
 create-nether-allowed: "&6%player% &ecreated an nether portal successfully at X: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world%&e."
 enter-nether-prohibited: "&6%player% &etried to enter into a nether portal at &eX: &6%X% &eY: &6%Y% &eZ: &6%Z% &eWorld: &6%world% &ebut was canceled by PortalsManager."
@@ -23,3 +24,65 @@ cant-enter-nether: "&cYou can't enter into a nether portal !"
 cant-enter-end: "&cYou can't enter into a end portal !"
 cant-create-nether: "&cYou can't create a nether portal !"
 cant-create-end: "&cYou can't place an eye of ender on end portal !"
+
+gui:
+  generic-items:
+    return:
+      name: "§cReturn"
+  plugin-language:
+    title: "&eLanguage of plugin"
+    items:
+      french:
+        name: "§eChange to French"
+      english:
+        name: "§eChange to English"
+  plugin-settings:
+    title: "&eSettings of Plugin"
+    items:
+      change-language:
+        name: "§eChange the language"
+      reload-configs:
+        name: "§eReload configuration files"
+  worlds-settings:
+    title: "&eSettings of World"
+    items:
+      world-information:
+        name: "&eSettings of &6%worldName%"
+        lore-separator: "&e&l-------------------------------------"
+        lore-allowed: "&eAllowed"
+        lore-prohibided: "&cProhibided"
+        lore-1: "&eCreating nether portals ⟶ "
+        lore-2: "&eEntering in nether portals ⟶ "
+        lore-3: "&ePlacing eyes of ender on end frames ⟶ "
+        lore-4: "&eEntering in end portals ⟶ "
+      prohibit-nether-portal-creation:
+        name: "&cProhibit nether portal creation"
+        lore: "&cClick here to prohibit nether portals creation"
+      prohibit-nether-portal-entering:
+        name: "&cProhibit nether portal entering"
+        lore: "&cClick here to prohibit nether portals entering"
+      prohibit-ender-eyes-placing:
+        name: "&cProhibit eyes of ender placing"
+        lore: "&cClick here to prohibit eyes of ender placing"
+      prohibit-end-portal-entering:
+        name: "&cProhibit end portal entering"
+        lore: "&cClick here to prohibit end portals entering"
+      allow-nether-portal-creation:
+        name: "&aAllow nether portal creation"
+        lore: "&aClick here to allow nether portals creation"
+      allow-nether-portal-entering:
+        name: "&aAllow nether portal entering"
+        lore: "&aClick here to allow nether portals entering"
+      allow-ender-eyes-placing:
+        name: "&aAllow eyes of ender placing"
+        lore: "&aClick here to allow eyes of ender placing"
+      allow-end-portal-entering:
+        name: "&aAllow end portal entering"
+        lore: "&aClick here to allow end portals entering"
+  worlds-manager:
+    title: "&eManager of Worlds"
+    items:
+      configure-world:
+        name: "&eConfigure the world &6%worldName%"
+
+

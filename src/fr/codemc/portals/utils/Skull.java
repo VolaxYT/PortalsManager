@@ -78,7 +78,7 @@ public enum Skull {
         ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         ItemMeta headMeta = head.getItemMeta();
         Class<?> headMetaClass = headMeta.getClass();
-        Reflections.getField(headMetaClass, "profile", GameProfile.class).set(headMeta, profile);
+        Reflection.getField(headMetaClass, "profile", GameProfile.class).set(headMeta, profile);
         head.setItemMeta(headMeta);
         return head;
     }

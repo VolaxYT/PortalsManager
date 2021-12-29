@@ -22,7 +22,7 @@ import fr.codemc.portals.gui.PluginSettings;
 import fr.codemc.portals.gui.WorldsManager;
 import fr.codemc.portals.utils.ChatUtil;
 import fr.codemc.portals.utils.ConfigBuilder;
-import fr.codemc.portals.utils.LanguagePreference;
+import fr.codemc.portals.utils.Translator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,7 +32,7 @@ public class PortalsCommands implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(args.length != 1) { ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.help-message")); return false; }
+        if(args.length != 1) { ChatUtil.sendMessage(sender, Translator.translateMessage("commands.portals.help-message")); return false; }
 
         if(args[0].equalsIgnoreCase("reload")){
             if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.reload")))){
@@ -40,9 +40,9 @@ public class PortalsCommands implements CommandExecutor {
                 ConfigBuilder.getInstance().configs.getConfig("messages.yml").reload();
                 ConfigBuilder.getInstance().configs.getConfig("english.yml").reload();
                 ConfigBuilder.getInstance().configs.getConfig("french.yml").reload();
-                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.config-reload"));
+                ChatUtil.sendMessage(sender, Translator.translateMessage("commands.portals.config-reload"));
             }else
-                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
+                ChatUtil.sendMessage(sender, Translator.translateMessage("commands.no-permission"));
             return false;
         }
 
@@ -51,9 +51,9 @@ public class PortalsCommands implements CommandExecutor {
                 if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.worlds"))))
                     PortalsManager.getInstance().getGuiManager().open(((Player) sender), WorldsManager.class);
                 else
-                    ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
+                    ChatUtil.sendMessage(sender, Translator.translateMessage("commands.no-permission"));
             }else
-                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.not-player"));
+                ChatUtil.sendMessage(sender, Translator.translateMessage("commands.not-player"));
             return false;
         }
 
@@ -62,13 +62,13 @@ public class PortalsCommands implements CommandExecutor {
                 if(sender.hasPermission(ConfigBuilder.getInstance().getString(("permissions.settings"))))
                     PortalsManager.getInstance().getGuiManager().open(((Player) sender), PluginSettings.class);
                 else
-                    ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.no-permission"));
+                    ChatUtil.sendMessage(sender, Translator.translateMessage("commands.no-permission"));
             }else
-                ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.not-player"));
+                ChatUtil.sendMessage(sender, Translator.translateMessage("commands.not-player"));
             return false;
         }
 
-        ChatUtil.sendMessage(sender, LanguagePreference.formatMessage("commands.portals.help-message"));
+        ChatUtil.sendMessage(sender, Translator.translateMessage("commands.portals.help-message"));
         return true;
     }
 }
