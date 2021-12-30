@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
+
 public class PluginLogs implements GuiBuilder {
     @Override
     public String name() {
@@ -20,11 +22,31 @@ public class PluginLogs implements GuiBuilder {
 
     @Override
     public void contents(Player player, Inventory inv) {
-        boolean logPlayer = !Boolean.getBoolean(ConfigBuilder.getInstance().getString("logs.player"));
-        boolean logConsole = !Boolean.getBoolean(ConfigBuilder.getInstance().getString("logs.console"));
-        boolean logFile = !Boolean.getBoolean(ConfigBuilder.getInstance().getString("logs.file"));
+        String loreSeparator = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-separator");
+        String loreEnabled = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-enabled");
+        String loreDisabled = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-disabled");
+        String lore1 = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-1");
+        String lore2 = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-2");
+        String lore3 = Translator.translateMessage("gui.plugin-logs.items.logs-info.lore-3");
 
-        //inv.setItem(0, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/51269a067ee37e63635ca1e723b676f139dc2dbddff96bbfef99d8b35c996bc")).setName(Translator.translateMessage("gui.plugin-settings.items.change-language.name")).toItemStack());
+        boolean logPlayer = ConfigBuilder.getInstance().getBoolean("logs.player");
+        boolean logConsole = ConfigBuilder.getInstance().getBoolean("logs.console");
+        boolean logFile = ConfigBuilder.getInstance().getBoolean("logs.file");
+
+        inv.setItem(0, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/af33e7bb1256a12b5c88e705f21274fd8618bbde93c0dd3e22d9dbcf0b3a12b3")).setName(Translator.translateMessage("gui.plugin-logs.items.logs-info.name"))
+                .setLore(loreSeparator,
+                        lore1 + (logPlayer ? loreEnabled : loreDisabled),
+                        lore2 + (logConsole ? loreEnabled : loreDisabled),
+                        lore3 + (logFile ? loreEnabled : loreDisabled),
+                        loreSeparator).toItemStack());
+
+        inv.setItem(3, logPlayer ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.lore")).toItemStack() :
+                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.lore")).toItemStack());
+        inv.setItem(4, logConsole ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.lore")).toItemStack() :
+                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.lore")).toItemStack());
+        inv.setItem(5, logFile ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.lore")).toItemStack() :
+                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.lore")).toItemStack());
+
         inv.setItem(8, new ItemBuilder(Material.BARRIER, 1).setName(Translator.translateMessage("gui.generic-items.return.name")).toItemStack());
     }
 
@@ -33,9 +55,47 @@ public class PluginLogs implements GuiBuilder {
         if(current == null || !current.hasItemMeta() || current.getType() == null || current.getItemMeta().getDisplayName() == null)
             return;
 
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.name"))){
+            ConfigBuilder.getInstance().set("logs.player", false);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-disabled")).replaceAll("%logsType%", Translator.translateMessage("logs-player")));
+            reloadInv(player);
+        }
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.name"))){
+            ConfigBuilder.getInstance().set("logs.player", true);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-enabled")).replaceAll("%logsType%", Translator.translateMessage("logs-player")));
+            reloadInv(player);
+        }
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.name"))){
+            ConfigBuilder.getInstance().set("logs.console", false);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-disabled")).replaceAll("%logsType%", Translator.translateMessage("logs-console")));
+            reloadInv(player);
+        }
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.name"))){
+            ConfigBuilder.getInstance().set("logs.console", true);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-enabled")).replaceAll("%logsType%", Translator.translateMessage("logs-console")));
+            reloadInv(player);
+        }
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.name"))){
+            ConfigBuilder.getInstance().set("logs.file", false);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-disabled")).replaceAll("%logsType%", Translator.translateMessage("logs-file")));
+            reloadInv(player);
+        }
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.name"))){
+            ConfigBuilder.getInstance().set("logs.file", true);
+            ChatUtil.sendMessage(player, Translator.translateMessage("changed-logs").replaceAll("%status%", Translator.translateMessage("logs-enabled")).replaceAll("%logsType%", Translator.translateMessage("logs-file")));
+            reloadInv(player);
+        }
+
         if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.generic-items.return.name")))
             PortalsManager.getInstance().getGuiManager().open(player, PluginSettings.class);
+    }
 
-
+    private void reloadInv(Player player){
+        PortalsManager.getInstance().getGuiManager().open(player, this.getClass());
     }
 }

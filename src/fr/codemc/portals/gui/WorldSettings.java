@@ -125,6 +125,6 @@ public class WorldSettings implements GuiBuilder {
     }
 
     private void reloadInv(Player player){
-        PortalsManager.getInstance().getGuiManager().open(player, WorldSettings.class);
+        PortalsManager.getInstance().getGuiManager().open(player, this.getClass());
     }
 }

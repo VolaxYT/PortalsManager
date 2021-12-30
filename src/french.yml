@@ -27,6 +27,13 @@ cant-create-end: "&cVous ne pouvez pas créer un portail de l'end !"
 changed-english: "&eVous venez de changer la langue du plugin en &6Anglais."
 changed-french: "&eVous venez de changer la langue du plugin en &6Français."
 
+changed-logs: "&eVous venez %status% &eles logs %logsType%&e."
+logs-enabled: "d'&aactiver"
+logs-disabled: "de &cdésactiver"
+logs-player: "du &6joueur"
+logs-console: "de la &6console"
+logs-file: "du &6fichier"
+
 gui:
   generic-items:
     return:
@@ -42,33 +49,33 @@ gui:
     title: "&eLogs du plugin"
     items:
       logs-info:
-        name: "&eLogs of plugin"
+        name: "&eLogs du plugin"
         lore-separator: "&e&l-------------------------------------"
-        lore-enabled: "&aEnabled"
-        lore-disabled: "&cDisabled"
-        lore-1: "&eMessages for the player ⟶ "
-        lore-2: "&eMessages in the console ⟶ "
-        lore-3: "&eLogs in a custom file ⟶ "
+        lore-enabled: "&aActivé"
+        lore-disabled: "&cDésactivé"
+        lore-1: "&eMessages au joueur ⟶ "
+        lore-2: "&eMessages dans la console ⟶ "
+        lore-3: "&eLogs dans un fichier ⟶ "
       disable-logs-player:
-        name: "&cDisable messages for the player"
-        lore: "&cClick here to disable messages for the player"
+        name: "&cDésactiver les messages au joueur"
+        lore: "&cCliquez ici pour désactiver les messages au joueur"
       disable-logs-console:
-        name: "&cDisable messages in the console"
-        lore: "&cClick here to disable messages in the console"
+        name: "&cDésactiver les messages dans la console"
+        lore: "&cCliquez ici pour désactiver les messages dans la console"
       disable-logs-file:
-        name: "&cDisable logs in a custom file"
-        lore: "&cClick here to disable logs in a custom file"
+        name: "&cDésactiver les logs dans un fichier"
+        lore: "&cCliquez ici pour désactiver les logs dans un fichier"
       enable-logs-player:
-        name: "&aEnable messages for the player"
-        lore: "&aClick here to enable messages for the player"
+        name: "&aActiver les messages au joueur"
+        lore: "&aCliquez ici pour activer les messages au joueur"
       enable-logs-console:
-        name: "&aEnable messages in the console"
-        lore: "&aClick here to enable messages in the console"
+        name: "&aActiver les messages dans la console"
+        lore: "&aCliquez ici pour activer les messages dans la console"
       enable-logs-file:
-        name: "&aEnable logs in a custom file"
-        lore: "&aClick here to enable logs in a custom file"
+        name: "&aActiver les logs dans un fichier"
+        lore: "&aCliquez ici pour activer les logs dans un fichier"
   plugin-settings:
-    title: "&eParamètres du plugin"
+    title: "&eParamètres"
     items:
       change-language:
         name: "&eChanger la langue"

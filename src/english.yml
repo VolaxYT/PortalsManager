@@ -25,8 +25,15 @@ cant-enter-end: "&cYou can't enter into a end portal !"
 cant-create-nether: "&cYou can't create a nether portal !"
 cant-create-end: "&cYou can't place an eye of ender on end portal !"
 
-changed-english: "&eYou have just changed the language of the plugin to §6English."
-changed-french: "&eYou have just changed the language of the plugin to §6French."
+changed-english: "&eYou have just changed the language of the plugin to &6English&e."
+changed-french: "&eYou have just changed the language of the plugin to &6French&e."
+
+changed-logs: "&eYou have just %status% &elogs of &6%logsType%&e."
+logs-enabled: "&aenabled"
+logs-disabled: "&cdisabled"
+logs-player: "player"
+logs-console: "console"
+logs-file: "file"
 
 gui:
   generic-items:
@@ -49,7 +56,7 @@ gui:
         lore-disabled: "&cDisabled"
         lore-1: "&eMessages for the player ⟶ "
         lore-2: "&eMessages in the console ⟶ "
-        lore-3: "&eLogs in a custom file ⟶ "
+        lore-3: "&eLogs in a file ⟶ "
       disable-logs-player:
         name: "&cDisable messages for the player"
         lore: "&cClick here to disable messages for the player"
@@ -57,8 +64,8 @@ gui:
         name: "&cDisable messages in the console"
         lore: "&cClick here to disable messages in the console"
       disable-logs-file:
-        name: "&cDisable logs in a custom file"
-        lore: "&cClick here to disable logs in a custom file"
+        name: "&cDisable logs in a file"
+        lore: "&cClick here to disable logs in a file"
       enable-logs-player:
         name: "&aEnable messages for the player"
         lore: "&aClick here to enable messages for the player"
@@ -66,10 +73,10 @@ gui:
         name: "&aEnable messages in the console"
         lore: "&aClick here to enable messages in the console"
       enable-logs-file:
-        name: "&aEnable logs in a custom file"
-        lore: "&aClick here to enable logs in a custom file"
+        name: "&aEnable logs in a file"
+        lore: "&aClick here to enable logs in a file"
   plugin-settings:
-    title: "&eSettings of plugin"
+    title: "&eSettings"
     items:
       change-language:
         name: "&eChange the language"
