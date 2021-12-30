@@ -19,10 +19,7 @@ package fr.codemc.portals;
 
 import fr.codemc.portals.commands.CurrentWorldCommands;
 import fr.codemc.portals.commands.PortalsCommands;
-import fr.codemc.portals.gui.PluginLanguage;
-import fr.codemc.portals.gui.PluginSettings;
-import fr.codemc.portals.gui.WorldSettings;
-import fr.codemc.portals.gui.WorldsManager;
+import fr.codemc.portals.gui.*;
 import fr.codemc.portals.listeners.PortalsListener;
 import fr.codemc.portals.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -70,6 +67,7 @@ public class PortalsManager extends JavaPlugin {
         this.guiManager.addMenu(new WorldSettings());
         this.guiManager.addMenu(new PluginSettings());
         this.guiManager.addMenu(new PluginLanguage());
+        this.guiManager.addMenu(new PluginLogs());
 
         Pattern versionPattern = Pattern.compile("1\\.(\\d{1,2})(?:\\.(\\d{1,2}))?");
         Matcher versionMatcher = versionPattern.matcher(this.getServer().getVersion());

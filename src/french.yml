@@ -23,3 +23,97 @@ cant-enter-nether: "&cVous ne pouvez pas entrez dans un portail du nether !"
 cant-enter-end: "&cVous ne pouvez pas entrez dans un portail de l'end !"
 cant-create-nether: "&cVous ne pouvez pas créer un portail du nether !"
 cant-create-end: "&cVous ne pouvez pas créer un portail de l'end !"
+
+changed-english: "&eVous venez de changer la langue du plugin en &6Anglais."
+changed-french: "&eVous venez de changer la langue du plugin en &6Français."
+
+gui:
+  generic-items:
+    return:
+      name: "&cRetour"
+  plugin-language:
+    title: "&eLangue du plugin"
+    items:
+      french:
+        name: "&eChanger en Français"
+      english:
+        name: "&eChanger en Anglais"
+  plugin-logs:
+    title: "&eLogs du plugin"
+    items:
+      logs-info:
+        name: "&eLogs of plugin"
+        lore-separator: "&e&l-------------------------------------"
+        lore-enabled: "&aEnabled"
+        lore-disabled: "&cDisabled"
+        lore-1: "&eMessages for the player ⟶ "
+        lore-2: "&eMessages in the console ⟶ "
+        lore-3: "&eLogs in a custom file ⟶ "
+      disable-logs-player:
+        name: "&cDisable messages for the player"
+        lore: "&cClick here to disable messages for the player"
+      disable-logs-console:
+        name: "&cDisable messages in the console"
+        lore: "&cClick here to disable messages in the console"
+      disable-logs-file:
+        name: "&cDisable logs in a custom file"
+        lore: "&cClick here to disable logs in a custom file"
+      enable-logs-player:
+        name: "&aEnable messages for the player"
+        lore: "&aClick here to enable messages for the player"
+      enable-logs-console:
+        name: "&aEnable messages in the console"
+        lore: "&aClick here to enable messages in the console"
+      enable-logs-file:
+        name: "&aEnable logs in a custom file"
+        lore: "&aClick here to enable logs in a custom file"
+  plugin-settings:
+    title: "&eParamètres du plugin"
+    items:
+      change-language:
+        name: "&eChanger la langue"
+      change-logs:
+        name: "§eChanger les logs"
+      reload-configs:
+        name: "&eRecharger les fichiers de configuration"
+  worlds-settings:
+    title: "&eParamètres du monde"
+    items:
+      world-information:
+        name: "&eParamètres de &6%worldName%"
+        lore-separator: "&e&l-------------------------------------"
+        lore-allowed: "&aAutorisé"
+        lore-prohibited: "&cInterdit"
+        lore-1: "&eCréation de portails du nether ⟶ "
+        lore-2: "&eEntrer dans les portails du nether ⟶ "
+        lore-3: "&ePlacer les yeux de l'ender sur les end frames ⟶ "
+        lore-4: "&eEntrer dans les portails de l'end ⟶ "
+      prohibit-nether-portal-creation:
+        name: "&cInterdire la création de portail du nether"
+        lore: "&cCliquez ici pour interdire la création de portails du nether"
+      prohibit-nether-portal-entering:
+        name: "&cInterdire l'entrée dans les portails du nether"
+        lore: "&cCliquez ici pour interdire l'entrée dans les portails du nether"
+      prohibit-ender-eyes-placing:
+        name: "&cInterdire de placer les yeux de l'ender"
+        lore: "&cCliquez ici pour interdire de placer les yeux de l'ender"
+      prohibit-end-portal-entering:
+        name: "&cInterdire l'entrée dans les portails de l'end"
+        lore: "&cCliquez ici pour interdire l'entrée dans les portails de l'end"
+      allow-nether-portal-creation:
+        name: "&aAutoriser la création de portail du nether"
+        lore: "&aCliquez ici pour Autoriser la création de portails du nether"
+      allow-nether-portal-entering:
+        name: "&aAutoriser l'entrée dans les portails du nether"
+        lore: "&aCliquez ici pour Autoriser l'entrée dans les portails du nether"
+      allow-ender-eyes-placing:
+        name: "&aAutoriser de placer les yeux de l'ender"
+        lore: "&aCliquez ici pour autoriser de placer les yeux de l'ender"
+      allow-end-portal-entering:
+        name: "&aAutoriser l'entrée dans les portails de l'end"
+        lore: "&aCliquez ici pour autoriser l'entrée dans les portails de l'end"
+  worlds-manager:
+    title: "&eManager de mondes"
+    items:
+      configure-world:
+        name: "&eConfigurer le monde &6%worldName%"

@@ -24,7 +24,8 @@ public class PluginSettings implements GuiBuilder {
     @Override
     public void contents(Player player, Inventory inv) {
         inv.setItem(0, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/51269a067ee37e63635ca1e723b676f139dc2dbddff96bbfef99d8b35c996bc")).setName(Translator.translateMessage("gui.plugin-settings.items.change-language.name")).toItemStack());
-        inv.setItem(1, new ItemBuilder(Material.COMMAND, 1).setName(Translator.translateMessage("gui.plugin-settings.items.reload-configs.name")).toItemStack());
+        inv.setItem(1, new ItemBuilder(Skull.getCustomSkull("http://textures.minecraft.net/texture/4883d656e49c38c6b5378572f31c63c4c7a5dd4375b6ecbca43f5971c2cc4ff")).setName(Translator.translateMessage("gui.plugin-settings.items.change-logs.name")).toItemStack());
+        inv.setItem(2, new ItemBuilder(Material.COMMAND, 1).setName(Translator.translateMessage("gui.plugin-settings.items.reload-configs.name")).toItemStack());
     }
 
     @Override
@@ -34,6 +35,9 @@ public class PluginSettings implements GuiBuilder {
 
         if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-settings.items.change-language.name")))
             PortalsManager.getInstance().getGuiManager().open(player, PluginLanguage.class);
+
+        if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-settings.items.change-logs.name")))
+            PortalsManager.getInstance().getGuiManager().open(player, PluginLogs.class);
 
         if(current.getItemMeta().getDisplayName().equals(Translator.translateMessage("gui.plugin-settings.items.reload-configs.name")))
             player.performCommand("portals reload");

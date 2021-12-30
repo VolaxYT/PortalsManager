@@ -15,7 +15,7 @@ import java.util.List;
 public class WorldsManager implements GuiBuilder {
     @Override
     public String name() {
-        return "§eManager of Worlds";
+        return Translator.translateMessage("gui.worlds-manager.title");
     }
 
     @Override
@@ -64,11 +64,13 @@ public class WorldsManager implements GuiBuilder {
         if(current == null || !current.hasItemMeta() || current.getType() == null || current.getItemMeta().getDisplayName() == null)
             return;
 
-        //todo fix this fucking shit omg substring d'une config multi-lang aahhhhh
-        String worldName = current.getItemMeta().getDisplayName().substring(24);
-        if(Bukkit.getWorlds().contains(Bukkit.getWorld(worldName))){
-            MetadataUtil.setMetadata("lastMenu", worldName, player);
-            PortalsManager.getInstance().getGuiManager().open(player, WorldSettings.class);
+        String configureWorld = Translator.translateMessage("gui.worlds-manager.items.configure-world.name");
+        for(World world : Bukkit.getWorlds()){
+            if(current.getItemMeta().getDisplayName().equals(configureWorld.replaceAll("%worldName%", world.getName()))){
+                MetadataUtil.setMetadata("lastMenu", world.getName(), player);
+                PortalsManager.getInstance().getGuiManager().open(player, WorldSettings.class);
+                break;
+            }
         }
     }
 }

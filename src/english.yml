@@ -25,32 +25,66 @@ cant-enter-end: "&cYou can't enter into a end portal !"
 cant-create-nether: "&cYou can't create a nether portal !"
 cant-create-end: "&cYou can't place an eye of ender on end portal !"
 
+changed-english: "&eYou have just changed the language of the plugin to §6English."
+changed-french: "&eYou have just changed the language of the plugin to §6French."
+
 gui:
   generic-items:
     return:
-      name: "§cReturn"
+      name: "&cReturn"
   plugin-language:
     title: "&eLanguage of plugin"
     items:
       french:
-        name: "§eChange to French"
+        name: "&eChange to French"
       english:
-        name: "§eChange to English"
+        name: "&eChange to English"
+  plugin-logs:
+    title: "&eLogs of plugin"
+    items:
+      logs-info:
+        name: "&eLogs of plugin"
+        lore-separator: "&e&l-------------------------------------"
+        lore-enabled: "&aEnabled"
+        lore-disabled: "&cDisabled"
+        lore-1: "&eMessages for the player ⟶ "
+        lore-2: "&eMessages in the console ⟶ "
+        lore-3: "&eLogs in a custom file ⟶ "
+      disable-logs-player:
+        name: "&cDisable messages for the player"
+        lore: "&cClick here to disable messages for the player"
+      disable-logs-console:
+        name: "&cDisable messages in the console"
+        lore: "&cClick here to disable messages in the console"
+      disable-logs-file:
+        name: "&cDisable logs in a custom file"
+        lore: "&cClick here to disable logs in a custom file"
+      enable-logs-player:
+        name: "&aEnable messages for the player"
+        lore: "&aClick here to enable messages for the player"
+      enable-logs-console:
+        name: "&aEnable messages in the console"
+        lore: "&aClick here to enable messages in the console"
+      enable-logs-file:
+        name: "&aEnable logs in a custom file"
+        lore: "&aClick here to enable logs in a custom file"
   plugin-settings:
-    title: "&eSettings of Plugin"
+    title: "&eSettings of plugin"
     items:
       change-language:
-        name: "§eChange the language"
+        name: "&eChange the language"
+      change-logs:
+        name: "§eChange the logs"
       reload-configs:
-        name: "§eReload configuration files"
+        name: "&eReload configuration files"
   worlds-settings:
-    title: "&eSettings of World"
+    title: "&eSettings of the world"
     items:
       world-information:
         name: "&eSettings of &6%worldName%"
         lore-separator: "&e&l-------------------------------------"
-        lore-allowed: "&eAllowed"
-        lore-prohibided: "&cProhibided"
+        lore-allowed: "&aAllowed"
+        lore-prohibited: "&cProhibited"
         lore-1: "&eCreating nether portals ⟶ "
         lore-2: "&eEntering in nether portals ⟶ "
         lore-3: "&ePlacing eyes of ender on end frames ⟶ "
@@ -80,9 +114,7 @@ gui:
         name: "&aAllow end portal entering"
         lore: "&aClick here to allow end portals entering"
   worlds-manager:
-    title: "&eManager of Worlds"
+    title: "&eManager of worlds"
     items:
       configure-world:
         name: "&eConfigure the world &6%worldName%"
-
-
