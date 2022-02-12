@@ -13,10 +13,10 @@ Latest version : **not released**
 
 **Permissions**
 ----------------------------
-- pm.reload - For reload configuration
-- pm.worlds - For manage your worlds
-- pm.settings - For change the settings of plugin (in game)
-- pm.currentworld - For get the current world of the command sender
+- pm.reload - Allow configuration reload
+- pm.worlds - Allow management of worlds
+- pm.settings - Allow to change the plugin settings (in game)
+- pm.currentworld - Allow to get the current world from command sender
 
 
 **Features**
