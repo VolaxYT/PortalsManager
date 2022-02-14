@@ -1,20 +1,3 @@
-/*
- * PortalsCanceller, a Minecraft portals manipulation toolkit
- * Copyright (C) Volax
- *
- * This program is free software: you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package fr.volax.portalsmanager;
 
 import fr.volax.portalsmanager.commands.CurrentWorldCommands;
@@ -35,8 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Small and easy Portals Manager for Minecraft 1.8 to 1.17!
- * The project is on https://github.com/VolaxYT/Manager
+ * Portals Manager for Minecraft 1.18!
+ * The project is on https://github.com/VolaxYT/PortalsManager/
  *
  * @author Volax
  */
