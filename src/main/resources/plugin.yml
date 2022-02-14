@@ -1,0 +1,12 @@
+name: PortalsManager
+version: '${project.version}'
+main: fr.volax.portalsmanager.PortalsManager
+api-version: 1.18
+authors: [ Volax ]
+description: The Ultimate Plugin to control all the portals of all your worlds.
+website: https://github.com/VolaxYT/PortalsManager
+commands:
+  portals:
+    description: Main command of the plugin
+  currentWorld:
+    description: Get the world you are in

@@ -1,4 +1,4 @@
-package fr.codemc.portals.utils;
+package fr.volax.portalsmanager.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -6,7 +6,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -576,16 +575,16 @@ public class Reflection {
         }
     }
 
-    public static <T> Reflection.FieldAccessor<T> getField(Class<?> target, String name, Class<T> fieldType) {
+    public static <T> FieldAccessor<T> getField(Class<?> target, String name, Class<T> fieldType) {
         return getField(target, name, fieldType, 0);
     }
 
-    private static <T> Reflection.FieldAccessor<T> getField(Class<?> target, String name, Class<T> fieldType, int index) {
+    private static <T> FieldAccessor<T> getField(Class<?> target, String name, Class<T> fieldType, int index) {
         for (final Field field : target.getDeclaredFields()) {
             if ((name == null || field.getName().equals(name)) && fieldType.isAssignableFrom(field.getType()) && index-- <= 0) {
                 field.setAccessible(true);
 
-                return new Reflection.FieldAccessor<T>() {
+                return new FieldAccessor<T>() {
                     @SuppressWarnings("unchecked")
                     @Override
                     public T get(Object target) {

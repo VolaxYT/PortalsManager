@@ -1,22 +1,18 @@
-# PortalsManager - Soon
+# PortalsManager
 
-Minecraft Plugin from 1.8.X to 1.X.X.       
+Minecraft Plugin in 1.18.                        
 The Ultimate Plugin to control all the portals of all your worlds.
-
-Latest released version: **not released**   
-Latest version : **not released**
 
 🔧 **UPDATE**
 -----------------
-*Version: 1.0-beta*
-- **Writing this part soon**
+*New version: 1.0*
 
 **Permissions**
 ----------------------------
-- pm.reload - For reload configuration
-- pm.worlds - For manage your worlds
-- pm.settings - For change the settings of plugin (in game)
-- pm.currentworld - For get the current world of the command sender
+- pm.reload - Allow configuration reload
+- pm.worlds - Allow management of worlds
+- pm.settings - Allow to change the plugin settings (in game)
+- pm.currentworld - Allow to get the current world from command sender
 
 
 **Features**

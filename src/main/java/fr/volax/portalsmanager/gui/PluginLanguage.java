@@ -1,7 +1,7 @@
-package fr.codemc.portals.gui;
+package fr.volax.portalsmanager.gui;
 
-import fr.codemc.portals.PortalsManager;
-import fr.codemc.portals.utils.*;
+import fr.volax.portalsmanager.PortalsManager;
+import fr.volax.portalsmanager.utils.*;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

@@ -1,4 +1,4 @@
- package fr.codemc.portals.utils;
+ package fr.volax.portalsmanager.utils;
 
 public class Translator {
     public static String getLanguage(){

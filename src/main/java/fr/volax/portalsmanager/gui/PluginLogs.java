@@ -1,13 +1,11 @@
-package fr.codemc.portals.gui;
+package fr.volax.portalsmanager.gui;
 
-import fr.codemc.portals.PortalsManager;
-import fr.codemc.portals.utils.*;
+import fr.volax.portalsmanager.PortalsManager;
+import fr.volax.portalsmanager.utils.*;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.List;
 
 public class PluginLogs implements GuiBuilder {
     @Override
@@ -40,12 +38,12 @@ public class PluginLogs implements GuiBuilder {
                         lore3 + (logFile ? loreEnabled : loreDisabled),
                         loreSeparator).toItemStack());
 
-        inv.setItem(3, logPlayer ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.lore")).toItemStack() :
-                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.lore")).toItemStack());
-        inv.setItem(4, logConsole ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.lore")).toItemStack() :
-                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.lore")).toItemStack());
-        inv.setItem(5, logFile ? new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.lore")).toItemStack() :
-                new ItemBuilder(Material.SKULL_ITEM, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.lore")).toItemStack());
+        inv.setItem(3, logPlayer ? new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-player.lore")).toItemStack() :
+                new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-player.lore")).toItemStack());
+        inv.setItem(4, logConsole ? new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-console.lore")).toItemStack() :
+                new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-console.lore")).toItemStack());
+        inv.setItem(5, logFile ? new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.disable-logs-file.lore")).toItemStack() :
+                new ItemBuilder(Material.PLAYER_HEAD, 1, (short) 3).setSkullOwner("stone").setName(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.name")).setLore(Translator.translateMessage("gui.plugin-logs.items.enable-logs-file.lore")).toItemStack());
 
         inv.setItem(8, new ItemBuilder(Material.BARRIER, 1).setName(Translator.translateMessage("gui.generic-items.return.name")).toItemStack());
     }

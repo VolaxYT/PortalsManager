@@ -1,6 +1,6 @@
-package fr.codemc.portals.utils;
+package fr.volax.portalsmanager.utils;
 
-import fr.codemc.portals.PortalsManager;
+import fr.volax.portalsmanager.PortalsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,15 +15,14 @@ public class GuiManager implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event){
         Player    player  = (Player) event.getWhoClicked();
-        Inventory inv     = event.getInventory();
         ItemStack current = event.getCurrentItem();
 
         if(event.getCurrentItem() == null) return;
 
         PortalsManager.getInstance().getRegisteredMenus().values().stream()
-                .filter(menu -> inv.getName().equalsIgnoreCase(menu.name()))
+                .filter(menu -> event.getView().getTitle().equalsIgnoreCase(menu.name()))
                 .forEach(menu -> {
-                    menu.onClick(player, inv, current, event.getSlot());
+                    menu.onClick(player, event.getInventory(), current, event.getSlot());
                     event.setCancelled(true);
                 });
     }

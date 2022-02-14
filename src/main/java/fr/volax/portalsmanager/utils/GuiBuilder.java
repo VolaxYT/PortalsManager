@@ -1,8 +1,7 @@
-package fr.codemc.portals.utils;
+package fr.volax.portalsmanager.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
 public interface GuiBuilder {
