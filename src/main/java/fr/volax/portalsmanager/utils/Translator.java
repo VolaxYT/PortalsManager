@@ -9,10 +9,10 @@ public class Translator {
         String language = getLanguage();
 
         if (language.equalsIgnoreCase("english"))
-            return ConfigBuilder.getInstance().getString(messageConfigName, "english.yml").replaceAll("&", "§");
+            return ConfigBuilder.getInstance().getString(messageConfigName, "langs/en_US.yml").replaceAll("&", "§");
 
         if (language.equalsIgnoreCase("french"))
-            return ConfigBuilder.getInstance().getString(messageConfigName, "french.yml").replaceAll("&", "§");
+            return ConfigBuilder.getInstance().getString(messageConfigName, "langs/fr_FR.yml").replaceAll("&", "§");
 
         throw new NullPointerException("Error, language " + language + " not found !");
     }
