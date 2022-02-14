@@ -1,6 +1,6 @@
 # PortalsManager
 
-Minecraft Plugin in 1.18.                        
+Minecraft Plugin in 1.12.2.                        
 The Ultimate Plugin to control all the portals of all your worlds.
 
 🔧 **UPDATE**
