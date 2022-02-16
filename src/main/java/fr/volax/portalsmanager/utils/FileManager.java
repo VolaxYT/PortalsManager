@@ -2,15 +2,10 @@ package fr.volax.portalsmanager.utils;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.logging.Level;
 
 public class FileManager {
     private final JavaPlugin              plugin;
@@ -63,11 +58,9 @@ public class FileManager {
             return this.config;
         }
 
-
-        public Config saveDefaultConfig() {
+        public void saveDefaultConfig() {
             this.file = new File(FileManager.this.plugin.getDataFolder(), this.name);
             FileManager.this.plugin.saveResource(this.name, false);
-            return this;
         }
 
         public Config reload() {
@@ -89,9 +82,8 @@ public class FileManager {
             return this;
         }
 
-        public Config set(String key, Object value) {
+        public void set(String key, Object value) {
             get().set(key, value);
-            return this;
         }
 
         public Object get(String key) {
