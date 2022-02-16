@@ -2,7 +2,7 @@ name: PortalsManager
 version: '${project.version}'
 main: fr.volax.portalsmanager.PortalsManager
 api-version: 1.18
-authors: [ Volax ]
+author: Volax
 description: The Ultimate Plugin to control all the portals of all your worlds.
 website: https://github.com/VolaxYT/PortalsManager
 commands:

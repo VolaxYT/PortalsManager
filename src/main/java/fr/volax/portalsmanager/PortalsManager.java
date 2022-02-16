@@ -8,12 +8,19 @@ import fr.volax.portalsmanager.utils.ConfigBuilder;
 import fr.volax.portalsmanager.utils.FileManager;
 import fr.volax.portalsmanager.utils.GuiBuilder;
 import fr.volax.portalsmanager.utils.GuiManager;
+import jdk.jpackage.internal.Log;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,8 +47,10 @@ public class PortalsManager extends JavaPlugin {
 
         ConfigBuilder configBuilder = new ConfigBuilder(new FileManager(this));
         saveDefaultConfig();
-        configBuilder.configs.getConfig("langs/fr_FR.yml").saveDefaultConfig();
-        configBuilder.configs.getConfig("langs/en_US.yml").saveDefaultConfig();
+
+        for(String pathname : Objects.requireNonNull(new File(Bukkit.getServer().getPluginsFolder() + "/PortalsManager/langs").list((f, name) -> name.endsWith(".yml")))){
+            configBuilder.configs.getConfig("langs/" + pathname).saveDefaultConfig();
+        }
 
         getServer().getPluginManager().registerEvents(new PortalsListener(), this);
         getServer().getPluginManager().registerEvents(new GuiManager(), this);
@@ -65,12 +74,11 @@ public class PortalsManager extends JavaPlugin {
                 String patchS = versionMatcher.group(2);
                 int patch = (patchS == null || patchS.isEmpty()) ? 0 : Integer.parseInt(patchS);
                 versionInteger = (minor * 100) + patch;
-                getLogger().info("Detection de Minecraft " + versionMatcher.group());
             } catch (NumberFormatException ignored) {}
         }
 
         serverVersion = versionInteger;
-        getServer().getConsoleSender().sendMessage("§bVersion du serveur: " + serverVersion);
+        getServer().getConsoleSender().sendMessage("§bMinecraft " + serverVersion + " found.");
 
         if(!debugFile.exists()) {
             try {
