@@ -3,6 +3,8 @@
 A Minecraft plugin in 1.18.                        
 The Ultimate Plugin to control all the portals of all your worlds.
 
+A stable version will soon be upload on spigotmc
+
 🔧 **UPDATE**
 -----------------
 *New version: 1.0*
