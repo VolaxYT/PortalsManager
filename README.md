@@ -24,4 +24,4 @@ A stable version will soon be upload on spigotmc
 - All configurable from in-game menus
 - Different types of logs (console, ingame and in log file) for player actions (enter/create a nether/end portal)
 
-***© CodeMC | Volax.***
+***© Volax.***
