@@ -8,19 +8,13 @@ import fr.volax.portalsmanager.utils.ConfigBuilder;
 import fr.volax.portalsmanager.utils.FileManager;
 import fr.volax.portalsmanager.utils.GuiBuilder;
 import fr.volax.portalsmanager.utils.GuiManager;
-import jdk.jpackage.internal.Log;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
