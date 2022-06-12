@@ -8,6 +8,7 @@ import fr.volax.portalsmanager.utils.ConfigBuilder;
 import fr.volax.portalsmanager.utils.FileManager;
 import fr.volax.portalsmanager.utils.GuiBuilder;
 import fr.volax.portalsmanager.utils.GuiManager;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,17 +27,14 @@ import java.util.regex.Pattern;
  */
 
 public class PortalsManager extends JavaPlugin {
-    public  static PortalsManager                               instance;
-    private GuiManager guiManager;
-    public         File                                         debugFile;
-    private        Map<Class<? extends GuiBuilder>, GuiBuilder> registeredMenus;
-    private int serverVersion;
+    @Getter private static PortalsManager instance;
+    @Getter private File debugFile;
+    @Getter private Map<Class<? extends GuiBuilder>, GuiBuilder> registeredMenus;
 
     @Override
     public void onEnable() {
         instance = this;
         this.registeredMenus = new HashMap<>();
-        this.guiManager = new GuiManager();
         this.debugFile = new File(getDataFolder(), "logs.txt");
 
         ConfigBuilder configBuilder = new ConfigBuilder(new FileManager(this));
@@ -52,11 +50,11 @@ public class PortalsManager extends JavaPlugin {
         getCommand("portals").setExecutor(new PortalsCommands());
         getCommand("currentWorld").setExecutor(new CurrentWorldCommands());
 
-        this.guiManager.addMenu(new WorldsManager());
-        this.guiManager.addMenu(new WorldSettings());
-        this.guiManager.addMenu(new PluginSettings());
-        this.guiManager.addMenu(new PluginLanguage());
-        this.guiManager.addMenu(new PluginLogs());
+        GuiManager.getInstance().addMenu(new WorldsManager());
+        GuiManager.getInstance().addMenu(new WorldSettings());
+        GuiManager.getInstance().addMenu(new PluginSettings());
+        GuiManager.getInstance().addMenu(new PluginLanguage());
+        GuiManager.getInstance().addMenu(new PluginLogs());
 
         Pattern versionPattern = Pattern.compile("1\\.(\\d{1,2})(?:\\.(\\d{1,2}))?");
         Matcher versionMatcher = versionPattern.matcher(this.getServer().getVersion());
@@ -71,8 +69,7 @@ public class PortalsManager extends JavaPlugin {
             } catch (NumberFormatException ignored) {}
         }
 
-        serverVersion = versionInteger;
-        getServer().getConsoleSender().sendMessage("§bMinecraft " + serverVersion + " found.");
+        getServer().getConsoleSender().sendMessage("§bMinecraft " + versionInteger + " found.");
 
         if(!debugFile.exists()) {
             try {
@@ -81,17 +78,5 @@ public class PortalsManager extends JavaPlugin {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static PortalsManager getInstance() {
-        return instance;
-    }
-
-    public Map<Class<? extends GuiBuilder>, GuiBuilder> getRegisteredMenus() {
-        return registeredMenus;
-    }
-
-    public GuiManager getGuiManager() {
-        return guiManager;
     }
 }

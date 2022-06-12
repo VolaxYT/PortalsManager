@@ -23,7 +23,7 @@ public class ChatUtil {
 
     public static void logMessage(String message){
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter(PortalsManager.getInstance().debugFile, true), true);
+            PrintWriter writer = new PrintWriter(new FileWriter(PortalsManager.getInstance().getDebugFile(), true), true);
             if (!message.equals(""))
                 writer.write("[" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "] " + message.replaceAll("§e", "").replaceAll("§6", ""));
             writer.write(System.getProperty("line.separator"));
